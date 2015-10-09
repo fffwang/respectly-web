@@ -1,0 +1,16 @@
+{
+  "mongodb": {
+    "localhost": {
+      "uri": "mongodb://127.0.0.1:27017/respectly",
+      "username": "respectly",
+      "password": "",
+      "poolSize": 3
+    },
+    "production": {
+      "uri": "mongodb://127.0.0.1:27017/respectly",
+      "username": "respectly",
+      "password": "",
+      "poolSize": 3
+    }
+  }
+}

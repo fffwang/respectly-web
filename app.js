@@ -4,11 +4,26 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
+var DATABASE = "mongodb";
+var ENVIRONMENT = app.get('env');
+
+var config_mongodb = config[DATABASE][ENVIRONMENT];
+mongoose.connect(config_mongodb.uri, {
+    db: {native_parser: true},
+    server: {poolSize: config_mongodb.poolSize},
+    user: config_mongodb.username,
+    pass: config_mongodb.password
+});
+mongoose.connection.on('open', function () {
+    console.log('Connection opened to mongodb!');
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -6,4 +6,12 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Respect.ly' });
 });
 
+router.post('/signup', function(req, res, next) {
+    res.render('index', { title: 'Respect.ly' });
+});
+
+router.post('/signin', function(req, res, next) {
+    res.render('index', { title: 'Respect.ly' });
+});
+
 module.exports = router;
