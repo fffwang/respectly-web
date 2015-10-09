@@ -39,6 +39,14 @@ var user = new schema({
             required: true
         }
     },
+    password: {
+        type: String,
+        required: true
+    },
+    loginType: {
+        type: String,
+        default: "email"
+    },
     joinedAt: {
         type: Date,
         default: Date.now,
