@@ -3,6 +3,8 @@ var router = express.Router();
 
 var _$usr = require('../db/model').user;
 
+var msg = require('../message');
+
 var generateUser = function (user) {
   var obj = {
     profile: {
@@ -38,8 +40,8 @@ router.post('/signup', function (req, res, next) {
 
     if (docUsr) {
       res.header('Content-Type', 'application/json');
-      res.header('content-length', Buffer.byteLength(JSON.stringify({"message": "Email exists."})));
-      res.end(JSON.stringify({"message": "Email exists."}));
+      res.header('content-length', Buffer.byteLength(JSON.stringify({"message": msg.error.EMAIL_EXISTS})));
+      res.end(JSON.stringify({"message": msg.error.EMAIL_EXISTS}));
     } else {
       var usrGen = generateUser(user);
 
@@ -73,16 +75,16 @@ router.post('/signin', function (req, res, next) {
 
     if (!docUsr) {
       res.header('Content-Type', 'application/json');
-      res.header('content-length', Buffer.byteLength(JSON.stringify({"message": "Invalid ID."})));
-      res.end(JSON.stringify({"message": "Invalid ID."}));
+      res.header('content-length', Buffer.byteLength(JSON.stringify({"message": msg.error.INVALID_ID})));
+      res.end(JSON.stringify({"message": msg.error.INVALID_ID}));
     } else if (docUsr.password !== password){
       res.header('Content-Type', 'application/json');
-      res.header('content-length', Buffer.byteLength(JSON.stringify({"message": "Incorrect password."})));
-      res.end(JSON.stringify({"message": "Incorrect password."}));
+      res.header('content-length', Buffer.byteLength(JSON.stringify({"message": msg.error.INCORRECT_PASSWORD})));
+      res.end(JSON.stringify({"message": msg.error.INCORRECT_PASSWORD}));
     } else {
       res.header('Content-Type', 'application/json');
-      res.header('content-length', Buffer.byteLength(JSON.stringify({"message": "Success."})));
-      res.end(JSON.stringify({"message": "Success."}));
+      res.header('content-length', Buffer.byteLength(JSON.stringify({"message": msg.success.SIGNIN})));
+      res.end(JSON.stringify({"message": msg.success.SIGNIN}));
     }
   });
 });
