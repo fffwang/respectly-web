@@ -24,7 +24,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/signup', function (req, res, next) {
-  var user = req.param('user');
+  var user = req.body.user;
   var email = user.email;
 
   var query = _$usr
@@ -57,7 +57,7 @@ router.post('/signup', function (req, res, next) {
 });
 
 router.post('/signin', function (req, res, next) {
-  var user = req.param('user'),
+  var user = req.body.user,
     email = user.email,
     password = user.password;
 
