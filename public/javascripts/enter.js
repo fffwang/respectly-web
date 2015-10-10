@@ -5,11 +5,11 @@ $(document).ready(function () {
       method: "POST",
       url: "/signup",
       data: {
-        id: $('#id').val,
-        pwd: $('#pwd').val(),
-        pmail: $('#pmail').val(),
-        snum: $('#snum').val(),
-        sname: $('#sname').val()
+        id: $('#join-id').val,
+        password: $('#join-password').val(),
+        email: $('#join-email').val(),
+        studentNumber: $('#join-student-number').val(),
+        name: $('#join-name').val()
       } 
     }).done(function(msg){
         console.log(msg);
@@ -21,8 +21,8 @@ $(document).ready(function () {
       method: "POST",
       url: "/signin",
       data: {
-        id: $('#id').val,
-        pwd: $('#pwd').val()
+        id: $('#login-id').val,
+        password: $('#login-password').val()
       } 
     }).done(function(msg){
         console.log(msg);

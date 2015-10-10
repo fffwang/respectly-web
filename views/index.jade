@@ -25,41 +25,41 @@ block content
     .modal-dialog
       .modal-content
         .modal-header
-          button.close(type="button" data-dismiss="modal" aria-label="Close")
-            span(aria-hidden="true")&times;
+          button.close(type="button", data-dismiss="modal", aria-label="Close")
+            span(aria-hidden="true") &times;
           h4.modal-title Modal title
         .modal-body
           label 아이디 
-          input.form-control(type="text" name="id" id="id") 
+          input#join-id.form-control(type="text", name="join-id") 
           br
           label 비밀번호  
-          input.form-control(type="password" name="pwd" id="pwd")  
+          input#join-password.form-control(type="password", name="join-password")  
           br
           label 포탈 아이디 
-          input.form-control(type="email" name="pmail" id="pmail") 
+          input#join-email.form-control(type="email", name="join-email")
           label 학번 
-          input.form-control(type="text" name="snum" id="snum") 
+          input#join-student-number.form-control(type="text", name="join-student-number") 
           label 이름  
-          input.form-control(type="text" name="sname" id="sname") 
+          input#join-name.form-control(type="text", name="join-name") 
 
 
         .modal-footer
-          button.btn.btn-default(type="button" data-dismiss="modal") 닫기 
-          button#joinCall.btn.btn-primary(type="button" data-dismiss="modal") 가입 
+          button.btn.btn-default(type="button", data-dismiss="modal") 닫기 
+          button#joinCall.btn.btn-primary(type="button", data-dismiss="modal") 가입 
 
   #login.modal
     .modal-dialog
       .modal-content
         .modal-header
           button.close(type="button" data-dismiss="modal" aria-label="Close")
-            span(aria-hidden="true")&times;
+            span(aria-hidden="true") &times;
           h4.modal-title Modal title
         .modal-body
           label 아이디 
-          input.form-control(type="text" name="id" id="id") 
+          input#login-id.form-control(type="text", name="login-id") 
           br
           label 비밀번호  
-          input.form-control(type="password" name="pwd" id="pwd")  
+          input#login-password.form-control(type="password", name="login-password")  
           br
 
         .modal-footer
