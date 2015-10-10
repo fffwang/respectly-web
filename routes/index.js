@@ -19,10 +19,10 @@ var generateUser = function (user) {
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', {title: 'Respect.ly'});
+  res.render('index', {title: 'Respect.ly'}); 
 });
 
-router.get('/signup', function (req, res, next) {
+router.post('/signup', function (req, res, next) {
   var user = req.param('user');
   var email = user.email;
 
