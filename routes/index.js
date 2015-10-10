@@ -11,6 +11,7 @@ var generateUser = function (user) {
       studentNumber: user.studentNumber,
       email: user.email
     },
+    id: user.id,
     password: user.password
   };
 
