@@ -23,6 +23,10 @@ var user = new schema({
       required: true
     }
   },
+  id: {
+    type: String,
+    required: true
+  },
   password: {
     type: String,
     required: true
