@@ -1,23 +1,23 @@
 extends layout
 
 block navigation
-    header
-        nav.mainnav
-            h1.site-logo
-                a.logo(href="/") 
-                    img(alt="Respect.ly" src="/images/wl.png")
-            ul.left
-                li
-                    a(href='#') ABOUT
-                li
-                    a(href="#") START
-            audio#audio(loop autoplay src="/music/11.mp3")
-            ul.right
-                li
-                    a(href="#") JOIN
-                li
-                    a(href="#") LOGIN
-                li
-                    a(href="/")#music
-                        span.glyphicon.glyphicon-pause(aria-hidden="true")
+  header
+    nav.mainnav
+      h1.site-logo
+        a.logo(href="/")
+          img(alt="Respect.ly" src="/images/wl.png")
+      ul.left
+        li
+          a(href='#') ABOUT
+        li
+          a(href="#") START
+      audio#audio(loop autoplay src="/music/11.mp3")
+      ul.right
+        li
+          a(href="#") JOIN
+        li
+          a(href="#") LOGIN
+        li
+          a(href="/")#music
+            span.glyphicon.glyphicon-pause(aria-hidden="true")
 block content
