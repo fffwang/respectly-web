@@ -12,9 +12,8 @@ $(document).ready(function(){
           $('header').animate({
             opacity : 0.8
           }, 1000);
-       } else if(scroll_start > 100){
+       } else if( scroll_start < offset.top-90 && scroll_start > 100){
           $('header').css('opacity', '0');
-
        } else {
           $('#ologo').attr('src', '/images/wl.png');
           $('header').css('background-color', 'transparent');
