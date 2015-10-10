@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+var nodemailer = require('nodemailer');
+
 var _$usr = require('../db/model').user;
 
 var msg = require('../message');
