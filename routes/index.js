@@ -58,14 +58,13 @@ router.post('/signup', function (req, res, next) {
 
 router.post('/signin', function (req, res, next) {
   var user = req.param('user'),
-    email = user.email,
+    id = user.id,
     password = user.password;
 
   // check exist user
   var query = _$usr
-    .findOne({'profile.email': email})
-    .select('id profile password')
-    .sort('profile.email')
+    .findOne({'id': id})
+    .select('id password')
     .lean(true);
 
   query.exec(function (err, docUsr) {
