@@ -4,22 +4,6 @@
 var mongoose = require('mongoose')
     , schema = mongoose.Schema;
 
-var redirectLink = new schema({
-    _id: {
-        type: String,
-        required: true,
-        index: true
-    },
-    target: {
-        type: String,
-        required: true
-    }
-});
-
-exports.redirectLink = mongoose.model('redirectLink', redirectLink);
-
-// Models
-
 var user = new schema({
     profile: {
         name: {
