@@ -19,7 +19,6 @@ block content
 
   section.thirdmain
 
-
   section.fourthmain
 
   #login.modal
@@ -31,6 +30,20 @@ block content
           h4.modal-title Modal title
         .modal-body
           p One find body&hellip;
+          label 아이디 
+          input.form-control(type="text" name="id" id="id") 
+          br
+          label 비밀번호  
+          input.form-control(type="password" name="pwd" id="pwd")  
+          br
+          label 포탈 아이디 
+          input.form-control(type="email" name="pmail" id="pmail") 
+          label 학번 
+          input.form-control(type="text" name="snum" id="snum") 
+          label 이름  
+          input.form-control(type="text" name="sname" id="sname") 
+
+
         .modal-footer
-          button.btn.btn-default(type="button" data-dismiss="modal") Close
-          button.btn.btn-primary(type="button") Save changes
+          button.btn.btn-default(type="button" data-dismiss="modal") 닫기 
+          button#joinCall.btn.btn-primary(type="button" data-dismiss="modal") 가입 
