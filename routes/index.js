@@ -11,6 +11,7 @@ var generateUser = function (user) {
       studentNumber: user.studentNumber,
       email: user.email
     },
+    id: user.id,
     password: user.password
   };
 
@@ -55,8 +56,35 @@ router.post('/signup', function (req, res, next) {
   });
 });
 
-router.get('/signin', function (req, res, next) {
-  res.render('index', {title: 'Respect.ly'});
+router.post('/signin', function (req, res, next) {
+  var user = req.param('user'),
+    email = user.email,
+    password = user.password;
+
+  // check exist user
+  var query = _$usr
+    .findOne({'profile.email': email})
+    .select('id profile password')
+    .sort('profile.email')
+    .lean(true);
+
+  query.exec(function (err, docUsr) {
+    if (err) return next(err);
+
+    if (!docUsr) {
+      res.header('Content-Type', 'application/json');
+      res.header('content-length', Buffer.byteLength(JSON.stringify({"message": "Invalid ID."})));
+      res.end(JSON.stringify({"message": "Invalid ID."}));
+    } else if (docUsr.password !== password){
+      res.header('Content-Type', 'application/json');
+      res.header('content-length', Buffer.byteLength(JSON.stringify({"message": "Incorrect password."})));
+      res.end(JSON.stringify({"message": "Incorrect password."}));
+    } else {
+      res.header('Content-Type', 'application/json');
+      res.header('content-length', Buffer.byteLength(JSON.stringify({"message": "Success."})));
+      res.end(JSON.stringify({"message": "Success."}));
+    }
+  });
 });
 
 module.exports = router;
