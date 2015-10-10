@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var _$usr = require('../../db/model').user;
+var _$usr = require('../db/model').user;
 
 var generateUser = function (user) {
     var obj = {
