@@ -4,7 +4,6 @@ $(document).ready(function () {
     var startchange = $('.secondmain');
     var offset = startchange.offset();
 
-
     if (scroll_start > offset.top - 140) {
       $('#ologo').attr('src', '/images/vl.png');
       $('header').css('background-color', '#B1C5FF');

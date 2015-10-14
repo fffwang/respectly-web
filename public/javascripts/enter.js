@@ -5,7 +5,7 @@ $(document).ready(function () {
       method: "POST",
       url: "/signup",
       data: {
-        id: $('#id').val,
+        id: $('#id').val(),
         pwd: $('#pwd').val(),
         pmail: $('#pmail').val(),
         snum: $('#snum').val(),
@@ -21,7 +21,7 @@ $(document).ready(function () {
       method: "POST",
       url: "/signin",
       data: {
-        id: $('#id').val,
+        id: $('#id').val(),
         pwd: $('#pwd').val()
       } 
     }).done(function(msg){
