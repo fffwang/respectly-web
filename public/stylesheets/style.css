@@ -53,6 +53,23 @@ nav.mainnav:after{
 	visibility: hidden;
 	clear: both;
 }
+
+.fixedheader{
+background-color:#03ae6d;
+background-image: linear-gradient(to left, #07b15f 0, #00ac92 50%, #00849e 100%);
+position:fixed;
+opacity: 0.8;
+height: 60px;
+}
+
+.absoluteheader{
+background-color:transparent;
+background-image: none;
+position:absolute;
+opacity: 1;
+height: 80px;
+
+}
 .mainnav a{
 	/*layout*/
 	display: inline-block;
@@ -161,23 +178,23 @@ min-height: 100%;
 /*Sub Mains*/
 .secondmain{
 	position: absolute;
-	top: 810px;
+	top: 100%;
 	width: 100%;
-	height: 400px;
+	height: 40%;
 	background-color: #D1DEE3
 }
 .thirdmain{
 	position: absolute;
-	top: 1210px;
+	top: 140%;
 	width: 100%;
-	height: 400px;
+	height: 40%;
 	background-color: #828282
 
 }
 .fourthmain{
 	position: absolute;
-	top: 1610px;
+	top: 180%;
 	width: 100%;
-	height: 400px;
+	height: 40%;
 }
 /*Footer
