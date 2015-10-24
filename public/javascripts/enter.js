@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(function () {
   $('#joinCall').on('click', function(){
     $.ajax({
       method: "POST",
