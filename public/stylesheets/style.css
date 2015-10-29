@@ -104,7 +104,7 @@ ul.right > li > a{
   width: 100%;
   height: 60px;
   position: fixed;
-  z-index: 999;
+  z-index: 997;
   display: none;
   background-image: linear-gradient(to left, #07b15f 0, #00ac92 50%, #00849e 100%);
   background-color:#03ae6d;
@@ -114,7 +114,7 @@ nav.subnav{
   background-color: transparent;
   width: 90%;
   margin: 0 auto;
-    z-index: 999;
+    z-index: 997;
 height : 60px;
 }
 .subnav:after{
@@ -244,24 +244,46 @@ min-height: 100%;
 }
 
 /*Sub Mains*/
-.secondmain{
+.brief-container{
 	position: absolute;
 	top: 100%;
 	width: 100%;
 	height: 40%;
-	background-color: #D1DEE3
+	background-color: #F7FAFA;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #d9d9de;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #d9d9de;
+  }
+
+.brief-project{
+  position: absolute;
+  top: -100px;
+  width: 300px;
+  height: 200px;
+  background-color: #black
 }
-.thirdmain{
+
+.project{
 	position: absolute;
 	top: 140%;
 	width: 100%;
-	height: 40%;
-	background-color: #828282
+	height: 200%;
+	background-color: #F0E4D4
 
+}
+.project-content {
+  position: relative;
+  width: 80%;
+  margin: auto;
+  height: 100%;
+  background-color: white;
 }
 .fourthmain{
 	position: absolute;
-	top: 180%;
+	top: 340%;
 	width: 100%;
 	height: 40%;
 }

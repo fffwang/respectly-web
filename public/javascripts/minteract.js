@@ -1,7 +1,7 @@
 $(function () {
   $(window).scroll(function () {
     scroll_start = $(window).scrollTop();
-    var startchange = $('.secondmain');
+    var startchange = $('.brief-container');
     var offset = startchange.offset();
     if (scroll_start < offset.top - 200) { // top 
       $('.subheader').fadeOut(300);
