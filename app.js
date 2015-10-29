@@ -1,21 +1,30 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
+'use strict';
+
+var express       = require('express');
+var session       = require('express-session');
+var RedisStore    = require('connect-redis')(session);
+var path          = require('path');
+var favicon       = require('serve-favicon');
+var logger        = require('morgan');
+var cookieParser  = require('cookie-parser');
+var bodyParser    = require('body-parser');
+var mongoose      = require('mongoose');
 
 var config = require('./config');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+var routes      = require('./routes/index');
+var users       = require('./routes/users');
 
 var app = express();
 
 var DATABASE = "mongodb";
 var ENVIRONMENT = app.get('env');
 
+
+/**
+ * Database connection
+ * ==================================
+ */
 var config_mongodb = config[DATABASE][ENVIRONMENT];
 mongoose.connect(config_mongodb.uri, {
   db: {native_parser: true},
@@ -27,17 +36,35 @@ mongoose.connection.on('open', function () {
   console.log('Connection opened to mongodb!');
 });
 
-// view engine setup
+
+/**
+ * View engine setup
+ * ==================================
+ */
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// uncomment after placing your favicon in /public
-app.use(favicon(__dirname + '/public/images/favicon.ico'));
+
+/**
+ * Middlewares
+ * ==================================
+ */
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
+
+app.use(session({
+  store: new RedisStore,
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: true,
+  cookie: { maxAge: 86400000 }
+}));
+
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
 app.use('/', routes);
 app.use('/users', users);
@@ -49,8 +76,10 @@ app.use(function (req, res, next) {
   next(err);
 });
 
-// error handlers
-
+/**
+ * Error handlers
+ * ==================================
+ */
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development' || app.get('env') === 'localhost') {
