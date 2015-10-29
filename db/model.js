@@ -38,6 +38,18 @@ var user = new schema({
     type: String,
     default: "email"
   },
+  _projects: [
+    {
+      type: String,
+      ref: 'project'
+    }
+  ],
+  _comments: [
+    {
+      type: String,
+      ref: 'comment'
+    }
+  ],
   isAuthenticated: {
     type: Boolean,
     default: false
@@ -87,6 +99,12 @@ var project = new schema({
   thumbnail: {
     type: String
   },
+  _comments: [
+    {
+      type: String,
+      ref: 'comment'
+    }
+  ],
   createdAt: {
     type: Date,
     default: Date.now,
@@ -123,11 +141,7 @@ var comment = new schema({
     type: Date,
     default: Date.now,
     index: true
-  },
-  hidden: {
-    type: Boolean,
-    default: false
-  }  
+  }
 });
 
 exports.comment = mongoose.model('comment', comment);
