@@ -242,12 +242,13 @@ min-height: 100%;
 /*Sub Mains*/
 
 /*Brief Project Explain*/
+
 .brief-container{
 	position: absolute;
 	top: 100%;
 	width: 100%;
-	height: 40%;
-	background-color: #F7FAFA;
+	height: 50%;
+	background-color: #E8F6FF;
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: #d9d9de;
@@ -257,17 +258,17 @@ min-height: 100%;
   }
 .brief-project{
   position: relative;
-  top: -80px;
+  top: -60px;
   width: 60%;
   height: 350px;
   margin: 0 auto;
-  background-color: #E8F6FF;
+  background-color: #F7FAFA;
   padding: 20px;
 }
 .brief-project-inside{
   width: 100%;
   height: 100%;
-  background-color: #E8F6FF;
+  background-color: #F7FAFA;
 }
 .brief-project-picture{
   z-index: 10;
@@ -296,10 +297,10 @@ min-height: 100%;
 /* Full Project Explain */
 .project{
 	position: absolute;
-	top: 140%;
+	top: 150%;
 	width: 100%;
 	height: 200%;
-	background-color: #F0E4D4;
+	background-color: #B1C5FF;
 }
 .project-wrap {
   position: relative;
@@ -309,17 +310,21 @@ min-height: 100%;
   background-color: white;
 }
 .project-content{
-  margin: 0 20%;
+  margin: 5% 20%;
+}
+.project-picture{
+  background-size: 320px 240px;
+  background-image: url('/images/kustudents.jpg');
 }
 .project-content p{
 
 }
 .fourthmain{
 	position: absolute;
-	top: 340%;
+	top: 350%;
 	width: 100%;
 	height: 40%;
-  background-color: #B1C5FF;
+  background-color: black;
 }
 /* Footer */
 
