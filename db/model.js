@@ -75,7 +75,7 @@ var project = new schema({
       ref: 'user'
     }
   ],
-  _collabolators: [
+  _collaborators: [
     {
       type: String,
       ref: 'user'
