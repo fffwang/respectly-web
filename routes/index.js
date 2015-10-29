@@ -22,6 +22,36 @@ var generateUser = function (user) {
   return obj;
 };
 
+var sendEmail = function (to, subject, content, cb) {
+  var transporter = nodemailer.createTransport ({
+    service: 'Gmail',
+    auth: {
+      user: 'lsywind3@gmail.com',
+      pass: ''
+    }
+  });
+
+  // setup e-mail data with unicode symbols
+  var mailOptions = {
+    from: 'admin <admin@getswizzle.com>', // sender address
+    to: to, // list of receivers
+    subject: subject, // Subject line
+    html: content // html body
+  };
+
+  // send mail with defined transport object
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+      cb(error);
+    } else {
+      console.log('Message sent: ' + info.response);
+      cb();
+    }
+  });
+};
+
+
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index', {title: 'Respect.ly'}); 
@@ -87,6 +117,19 @@ router.post('/signin', function (req, res, next) {
       res.header('content-length', Buffer.byteLength(JSON.stringify({"message": msg.success.SIGNIN})));
       res.end(JSON.stringify({"message": msg.success.SIGNIN}));
     }
+  });
+});
+
+router.post('/email', function (req, res, next) {
+  var to = "lsywind3@gmail.com"
+    , subject = "Respectly 포털 이메일 인증 메일"
+    , url = "http://localhost:3000"
+    , content = "<h1>test</h1>";
+
+  sendEmail(to, subject, content, function(){
+    res.header('Content-Type', 'application/json');
+    res.header('content-length', Buffer.byteLength(JSON.stringify({"message": "E-mail sent."})));
+    res.end(JSON.stringify({"message": "E-mail sent."}));
   });
 });
 
