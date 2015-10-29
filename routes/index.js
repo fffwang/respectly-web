@@ -26,14 +26,14 @@ var sendEmail = function (to, subject, content, cb) {
   var transporter = nodemailer.createTransport ({
     service: 'Gmail',
     auth: {
-      user: 'lsywind3@gmail.com',
-      pass: ''
+      user: 'cugamgyul@gmail.com',
+      pass: 'melon123'
     }
   });
 
   // setup e-mail data with unicode symbols
   var mailOptions = {
-    from: 'admin <admin@getswizzle.com>', // sender address
+    from: 'admin <cugamgyul@gmail.com>', // sender address
     to: to, // list of receivers
     subject: subject, // Subject line
     html: content // html body
