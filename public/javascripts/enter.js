@@ -4,8 +4,9 @@ $(document).ready(function () {
     $.ajax({
       method: "POST",
       url: "/signup",
+      dataType: 'json',
       data: {
-        id: $('#join-id').val,
+        id: $('#join-id').val(),
         password: $('#join-password').val(),
         email: $('#join-email').val(),
         studentNumber: $('#join-student-number').val(),
@@ -20,8 +21,9 @@ $(document).ready(function () {
     $.ajax({
       method: "POST",
       url: "/signin",
+      dataType: "json",
       data: {
-        id: $('#login-id').val,
+        id: $('#login-id').val(),
         password: $('#login-password').val()
       } 
     }).done(function(msg){
