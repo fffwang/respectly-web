@@ -1,11 +1,11 @@
-extends layout
+extends ./layout.jade
 
 block navigation
   header
     nav.mainnav
       h1.site-logo
         a.logo(href="/")
-          img(alt="Respect.ly" id="ologo" src="/images/wl.png")
+          img(alt="Respect.ly" id="mlogo" src="/images/wl.png")
       ul.left
         li
           a(href='#') ABOUT
@@ -20,4 +20,22 @@ block navigation
         li
           a(href="/")#music
             span.glyphicon.glyphicon-pause(aria-hidden="true")
-block content
+  .subheader
+    nav.subnav
+      h1.site-logo
+        a.logo(href="/")
+          img(alt="Respect.ly" id="slogo" src="/images/vl.png")
+      ul.left
+        li
+          a(href='#') ABOUT
+        li
+          a(href="#") START
+      ul.right
+        li
+          a(href="#" data-toggle="modal" data-target="#join") JOIN
+        li
+          a(href="#" data-toggle="modal" data-target="#login") LOGIN
+        li
+          a(href="/")#music
+            span.glyphicon.glyphicon-pause(aria-hidden="true")
+

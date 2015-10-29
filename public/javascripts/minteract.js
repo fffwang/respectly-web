@@ -1,21 +1,12 @@
-$(document).ready(function () {
-  $(document).scroll(function () {
-    scroll_start = $(this).scrollTop();
-    var startchange = $('.secondmain');
+$(function () {
+  $(window).scroll(function () {
+    scroll_start = $(window).scrollTop();
+    var startchange = $('.brief-container');
     var offset = startchange.offset();
-
-
-    if (scroll_start > offset.top - 140) {
-      $('#ologo').attr('src', '/images/vl.png');
-      $('header').css('background-color', '#B1C5FF');
-      $('header').css('position', 'fixed');
-      $('header').css('opacity', '0.9');
-    } else {
-      $('#ologo').attr('src', '/images/wl.png');
-      $('header').css('background-color', 'transparent');
-      $('header').css('position', 'absolute');
-      $('header').css('opacity', '1');
-
+    if (scroll_start < offset.top - 200) { // top 
+      $('.subheader').fadeOut(300);
+    } else { // bottom
+      $('.subheader').fadeIn(300);
     }
   });
 });
