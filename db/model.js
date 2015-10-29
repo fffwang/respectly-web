@@ -21,6 +21,9 @@ var user = new schema({
     email: {
       type: String,
       required: true
+    },
+    photo: {
+      type: String
     }
   },
   id: {
@@ -34,6 +37,10 @@ var user = new schema({
   loginType: {
     type: String,
     default: "email"
+  },
+  isAuthenticated: {
+    type: Boolean,
+    default: false
   },
   joinedAt: {
     type: Date,
