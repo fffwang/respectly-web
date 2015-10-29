@@ -1,5 +1,7 @@
 extends ./layout.jade
 
+- var id = session.id;
+
 block navigation
   header
     nav.mainnav
@@ -13,10 +15,15 @@ block navigation
           a(href="#") START
       audio#audio(loop autoplay src="/music/11.mp3")
       ul.right
-        li
-          a(href="#" data-toggle="modal" data-target="#join") JOIN
-        li
-          a(href="#" data-toggle="modal" data-target="#login") LOGIN
+        if id
+          li
+            a(href="/signout") LOGOUT
+        else
+          li
+            a(href="#" data-toggle="modal" data-target="#join") JOIN
+          li
+            a(href="#" data-toggle="modal" data-target="#login") LOGIN
+            
         li
           a(href="/")#music
             span.glyphicon.glyphicon-pause(aria-hidden="true")
