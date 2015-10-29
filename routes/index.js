@@ -10,10 +10,10 @@ var msg = require('../message');
 var generateUser = function (user) {
   var obj = {
     profile: {
-      name: user.name,
-      department: user.department,
-      studentNumber: user.studentNumber,
-      email: user.email
+      name: user.name || 'Respect.ly',
+      department: user.department || '엿같은경영대학',
+      studentNumber: parseInt(user.studentNumber),
+      email: user.email || ''
     },
     id: user.id,
     password: user.password
@@ -22,15 +22,44 @@ var generateUser = function (user) {
   return obj;
 };
 
+var sendEmail = function (to, subject, content, cb) {
+  var transporter = nodemailer.createTransport ({
+    service: 'Gmail',
+    auth: {
+      user: 'cugamgyul@gmail.com',
+      pass: 'melon123'
+    }
+  });
+
+  // setup e-mail data with unicode symbols
+  var mailOptions = {
+    from: 'admin <cugamgyul@gmail.com>', // sender address
+    to: to, // list of receivers
+    subject: subject, // Subject line
+    html: content // html body
+  };
+
+  // send mail with defined transport object
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+      cb(error);
+    } else {
+      console.log('Message sent: ' + info.response);
+      cb();
+    }
+  });
+};
+
+
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index', {title: 'Respect.ly'}); 
 });
 
 router.post('/signup', function (req, res, next) {
-  var user = req.body.user;
+  var user = req.body;
   var email = user.email;
-
   var query = _$usr
     .findOne({'profile.email': email})
     .select('profile')
@@ -48,7 +77,7 @@ router.post('/signup', function (req, res, next) {
       var usrGen = generateUser(user);
 
       _$usr.create(usrGen, function (err, docUsr) {
-        if (err) return next();
+        if (err) return next(err);
 
         var name = docUsr.profile.name;
 
@@ -61,7 +90,7 @@ router.post('/signup', function (req, res, next) {
 });
 
 router.post('/signin', function (req, res, next) {
-  var user = req.body.user,
+  var user = req.body,
     id = user.id,
     password = user.password;
 
@@ -87,6 +116,19 @@ router.post('/signin', function (req, res, next) {
       res.header('content-length', Buffer.byteLength(JSON.stringify({"message": msg.success.SIGNIN})));
       res.end(JSON.stringify({"message": msg.success.SIGNIN}));
     }
+  });
+});
+
+router.post('/email', function (req, res, next) {
+  var to = "lsywind3@gmail.com"
+    , subject = "Respectly 포털 이메일 인증 메일"
+    , url = "http://localhost:3000"
+    , content = "<h1>test</h1>";
+
+  sendEmail(to, subject, content, function(){
+    res.header('Content-Type', 'application/json');
+    res.header('content-length', Buffer.byteLength(JSON.stringify({"message": "E-mail sent."})));
+    res.end(JSON.stringify({"message": "E-mail sent."}));
   });
 });
 
