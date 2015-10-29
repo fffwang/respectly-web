@@ -1,3 +1,24 @@
+/**
+ * Author       - Dong Hyun Koo
+ * Email        - tellmewhy07@gmail.com
+ * Github       - https://github.com/AlwaysAwake
+ * Facebook     - https://www.facebook.com/donghyun.koo.98
+ */
+
+/**
+ * Author       - 빵임이
+ * Email        -
+ * Github       -
+ * Facebook     -
+ */
+
+/**
+ * Author       - 카추사 샌드백
+ * Email        -
+ * Github       -
+ * Facebook     -
+ */
+
 'use strict';
 
 var express       = require('express');
@@ -66,6 +87,15 @@ app.use(session({
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
+app.use(function(req, res, next) {
+  res.locals.session = req.session;
+  next();
+});
+
+/**
+ * Route handlers
+ * ==================================
+ */
 app.use('/', routes);
 app.use('/users', users);
 
