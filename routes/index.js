@@ -10,10 +10,10 @@ var msg = require('../message');
 var generateUser = function (user) {
   var obj = {
     profile: {
-      name: user.name,
-      department: user.department,
-      studentNumber: user.studentNumber,
-      email: user.email
+      name: user.name || 'Respect.ly',
+      department: user.department || '엿같은경영대학',
+      studentNumber: parseInt(user.studentNumber),
+      email: user.email || ''
     },
     id: user.id,
     password: user.password
@@ -58,9 +58,8 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/signup', function (req, res, next) {
-  var user = req.body.user;
+  var user = req.body;
   var email = user.email;
-
   var query = _$usr
     .findOne({'profile.email': email})
     .select('profile')
@@ -78,7 +77,7 @@ router.post('/signup', function (req, res, next) {
       var usrGen = generateUser(user);
 
       _$usr.create(usrGen, function (err, docUsr) {
-        if (err) return next();
+        if (err) return next(err);
 
         var name = docUsr.profile.name;
 
@@ -91,7 +90,7 @@ router.post('/signup', function (req, res, next) {
 });
 
 router.post('/signin', function (req, res, next) {
-  var user = req.body.user,
+  var user = req.body,
     id = user.id,
     password = user.password;
 

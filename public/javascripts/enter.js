@@ -3,6 +3,7 @@ $(function () {
     $.ajax({
       method: "POST",
       url: "/signup",
+      dataType: 'json',
       data: {
         id: $('#join-id').val(),
         password: $('#join-password').val(),
@@ -19,6 +20,7 @@ $(function () {
     $.ajax({
       method: "POST",
       url: "/signin",
+      dataType: "json",
       data: {
         id: $('#login-id').val(),
         password: $('#login-password').val()
