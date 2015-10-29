@@ -79,11 +79,18 @@ router.post('/signup', function (req, res, next) {
       _$usr.create(usrGen, function (err, docUsr) {
         if (err) return next(err);
 
-        var name = docUsr.profile.name;
+        var to = docUsr.profile.email
+          , subject = "Respectly 이메일 인증 메일"
+          , url = "http://localhost:3000"
+          , content = '<br>Respectly에 가입해주셔서 감사합니다. <br>' +
+                      '<br>아래 링크를 눌러주세요.<br><br>' +
+                      '<a href=' + url + '>Click</a><br><br>';
 
-        res.header('Content-Type', 'application/json');
-        res.header('content-length', Buffer.byteLength(JSON.stringify({"name": name})));
-        res.end(JSON.stringify({"name": name}));
+        sendEmail(to, subject, content, function(){
+          res.header('Content-Type', 'application/json');
+          res.header('content-length', Buffer.byteLength(JSON.stringify({"message": "E-mail sent."})));
+          res.end(JSON.stringify({"message": "E-mail sent."}));
+        });
       });
     }
   });
@@ -123,8 +130,10 @@ router.post('/email', function (req, res, next) {
   var to = "lsywind3@gmail.com"
     , subject = "Respectly 포털 이메일 인증 메일"
     , url = "http://localhost:3000"
-    , content = "<h1>test</h1>";
-
+    , content = '<br>Respectly에 가입해주셔서 감사합니다. <br>' +
+                '<br>아래 링크를 눌러주세요.<br><br>' +
+                '<a href=' + url + '>Click</a><br><br>';
+  
   sendEmail(to, subject, content, function(){
     res.header('Content-Type', 'application/json');
     res.header('content-length', Buffer.byteLength(JSON.stringify({"message": "E-mail sent."})));

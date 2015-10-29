@@ -62,3 +62,72 @@ var user = new schema({
 });
 
 exports.user = mongoose.model('user', user);
+
+var project = new schema({
+  _owner: {
+    type: String,
+    required: true,
+    ref: 'user'
+  },
+  _supporters: [
+    {
+      type: String,
+      ref: 'user'
+    }
+  ],
+  _collabolators: [
+    {
+      type: String,
+      ref: 'user'
+    }
+  ],
+  summary: {
+    type: String
+  },
+  thumbnail: {
+    type: String
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+    index: true
+  },
+  finishedAt: {
+    type: Date,
+    index: true
+  },
+  hidden: {
+    type: Boolean,
+    default: false
+  }
+});
+
+exports.project = mongoose.model('project', project);
+
+var comment = new schema({
+  _writer: {
+    type: String,
+    required: true,
+    ref: 'user'
+  },
+  _project: {
+    type: String,
+    required: true,
+    ref: 'project'
+  },
+  body: {
+    type: String,
+    required: true
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+    index: true
+  },
+  hidden: {
+    type: Boolean,
+    default: false
+  }  
+});
+
+exports.comment = mongoose.model('comment', comment);
