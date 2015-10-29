@@ -108,7 +108,7 @@ ul.right > li > a{
   display: none;
   background-image: linear-gradient(to left, #07b15f 0, #00ac92 50%, #00849e 100%);
   background-color:#03ae6d;
-  opacity: 0.8;  
+  opacity: 1;  
 }
 nav.subnav{
   background-color: transparent;
@@ -179,7 +179,6 @@ ul.right{
 
 }
 
-
 /*Video*/
 .video{
 	display: block;
@@ -212,8 +211,6 @@ min-width: 100%;
 min-height: 100%;
 }
 
-
-
 /*Body Contents*/
 .wrapper{
 	width: 50%;
@@ -230,7 +227,6 @@ min-height: 100%;
 	color: white;
 	margin-top: 10px;
 	line-height: 1.1em;
-
 }
 .landing-banner h3{
 	font-size: 600%;
@@ -244,6 +240,8 @@ min-height: 100%;
 }
 
 /*Sub Mains*/
+
+/*Brief Project Explain*/
 .brief-container{
 	position: absolute;
 	top: 100%;
@@ -257,34 +255,78 @@ min-height: 100%;
   border-top-style: solid;
   border-top-color: #d9d9de;
   }
-
 .brief-project{
-  position: absolute;
-  top: -100px;
-  width: 300px;
-  height: 200px;
-  background-color: #black
+  position: relative;
+  top: -80px;
+  width: 60%;
+  height: 350px;
+  margin: 0 auto;
+  background-color: #E8F6FF;
+  padding: 20px;
+}
+.brief-project-inside{
+  width: 100%;
+  height: 100%;
+  background-color: #E8F6FF;
+}
+.brief-project-picture{
+  z-index: 10;
+  width: 320px;
+  height: 240px;
+  background-size: 320px 240px;
+  background-image: url('/images/kustudents.jpg');
+}
+.brief-project-content{
+
+}
+.brief-project-collaborate{
+
+}
+.brief-project-support{
+
+}
+.brief-project-progressmask{
+
 }
 
+.brief-project-progressbar{
+
+}
+
+/* Full Project Explain */
 .project{
 	position: absolute;
 	top: 140%;
 	width: 100%;
 	height: 200%;
-	background-color: #F0E4D4
-
+	background-color: #F0E4D4;
 }
-.project-content {
+.project-wrap {
   position: relative;
   width: 80%;
   margin: auto;
   height: 100%;
   background-color: white;
 }
+.project-content{
+  margin: 0 20%;
+}
+.project-content p{
+
+}
 .fourthmain{
 	position: absolute;
 	top: 340%;
 	width: 100%;
 	height: 40%;
+  background-color: #B1C5FF;
 }
-/*Footer
+/* Footer */
+
+#modal-message-container {
+  text-align: left;
+}
+
+.modal-message {
+  margin: 0;
+}
