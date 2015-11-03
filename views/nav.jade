@@ -1,5 +1,7 @@
 extends ./layout.jade
 
+- var id = session.id;
+
 block navigation
   header
     nav.mainnav
@@ -13,13 +15,18 @@ block navigation
           a(href="#") START
       audio#audio(loop autoplay src="/music/11.mp3")
       ul.right
+        if id
+          li
+            a(href="/signout") LOGOUT
+        else
+          li
+            a(href="#" data-toggle="modal" data-target="#join") JOIN
+          li
+            a(href="#" data-toggle="modal" data-target="#login") LOGIN
+            
         li
-          a(href="#" data-toggle="modal" data-target="#join") JOIN
-        li
-          a(href="#" data-toggle="modal" data-target="#login") LOGIN
-        li
-          a(href="/")#music
-            span.glyphicon.glyphicon-pause(aria-hidden="true")
+          a(href="/").music
+            span.glyphicon.glyphicon-pause.playmode(aria-hidden="true")
   .subheader
     nav.subnav
       h1.site-logo
@@ -36,6 +43,6 @@ block navigation
         li
           a(href="#" data-toggle="modal" data-target="#login") LOGIN
         li
-          a(href="/")#music
-            span.glyphicon.glyphicon-pause(aria-hidden="true")
+          a(href="/").music
+            span.glyphicon.glyphicon-pause.playmode(aria-hidden="true")
 

@@ -119,11 +119,17 @@ router.post('/signin', function (req, res, next) {
       res.header('content-length', Buffer.byteLength(JSON.stringify({"message": msg.error.INCORRECT_PASSWORD})));
       res.end(JSON.stringify({"message": msg.error.INCORRECT_PASSWORD}));
     } else {
+      req.session.id = id;
       res.header('Content-Type', 'application/json');
       res.header('content-length', Buffer.byteLength(JSON.stringify({"message": msg.success.SIGNIN})));
       res.end(JSON.stringify({"message": msg.success.SIGNIN}));
     }
   });
+});
+
+router.get('/signout', function(req, res, next) {
+  req.session.destroy();
+  return res.redirect('/');
 });
 
 router.post('/email', function (req, res, next) {
