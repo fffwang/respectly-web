@@ -16,49 +16,50 @@ block content
   #join.modal
     .modal-dialog
       .modal-content
-        .modal-header
-          button.close(type="button", data-dismiss="modal", aria-label="Close")
-            span(aria-hidden="true") &times;
-          h4.modal-title Modal title
-        .modal-body
-          label 아이디 
-          input#join-id.form-control(type="text", name="join-id") 
-          br
-          label 비밀번호  
-          input#join-password.form-control(type="password", name="join-password")  
-          br
-          label 포탈 아이디 
-          input#join-email.form-control(type="email", name="join-email")
-          label 학번 
-          input#join-student-number.form-control(type="text", name="join-student-number") 
-          label 이름  
-          input#join-name.form-control(type="text", name="join-name") 
-
-
-        .modal-footer
-          #modal-message-container
-          button.btn.btn-default(type="button", data-dismiss="modal") 닫기 
-          button#joinCall.btn.btn-primary(type="button", data-dismiss="modal") 가입 
+        button.close(type="button", data-dismiss="modal", aria-label="Close")
+          span.glyphicon.glyphicon-remove(aria-hidden="true") 
+        .modal-inside
+         .modal-header
+            h1.modal-title Register
+            hr.white-separator            
+          .modal-body
+            label E-mail or username 
+            input#join-id.form-control(type="text", name="join-id") 
+            br
+            label Password  
+            input#join-password.form-control(type="password", name="join-password")  
+            br
+            label Portal username
+            input#join-email.form-control(type="email", name="join-email")
+            br
+            label Student number 
+            input#join-student-number.form-control(type="text", name="join-student-number") 
+            br
+            label Name  
+            input#join-name.form-control(type="text", name="join-name") 
+          .modal-footer
+            #modal-message-container
+            button#joinCall(type="button", data-dismiss="modal") Create account 
 
   #login.modal
     .modal-dialog
       .modal-content
-        .modal-header
-          button.close(type="button" data-dismiss="modal" aria-label="Close")
-            span(aria-hidden="true") &times;
-          h4.modal-title Modal title
-        .modal-body
-          label 아이디 
-          input#login-id.form-control(type="text", name="login-id") 
-          br
-          label 비밀번호  
-          input#login-password.form-control(type="password", name="login-password")  
-          br
-
-        .modal-footer
-          button.btn.btn-default(type="button" data-dismiss="modal") 닫기 
-          button#loginCall.btn.btn-primary(type="button" data-dismiss="modal") 로그인
-  
+        button.close(type="button", data-dismiss="modal", aria-label="Close")
+          span.glyphicon.glyphicon-remove(aria-hidden="true") 
+        .modal-inside
+          .modal-header
+            h1.modal-title Log  in
+            hr.grey-separator
+          .modal-body
+            label E-mail or username
+            input#login-id.form-control(type="text", name="login-id") 
+            br
+            label Password:  
+            input#login-password.form-control(type="password", name="login-password")  
+            br
+          .modal-footer
+            button#loginCall(type="button" data-dismiss="modal") Log in
+    
   section.brief-container
     a.left(href="#carousel-example-generic" role="button" data-slide="prev") 
       img#leftarrow(src="/images/arrow_left.svg")
@@ -100,19 +101,6 @@ block content
               .brief-project-support
               .brief-project-progressmask
                 .brief-project-progressbar
-
-
-
-      //- .brief-project-inside
-      //-   h6 우리들의 프로젝트
-      //-   .brief-project-picture
-      //-   .brief-project-content
-      //-     .brief-project-collaborate
-      //-     .brief-project-support
-      //-     .brief-project-progressmask
-      //-       .brief-project-progressbar
-
-
 
   section.project
     .project-wrap

@@ -347,12 +347,81 @@ width: 20%;
 	height: 200px;
   background-color: black;
 }
-/* Footer */
-
-#modal-message-container {
-  text-align: left;
+/* Modal */
+.glyphicon-remove{
+  margin: 20px;
+}
+.modal
+{
+ font-family: Advent Pro;
+}
+#join .modal-content{
+  border-radius: 0;
+  background-color: #EEEEEE;
+}
+#login .modal-content{
+  background-color: white;
+  border-radius: 0;
+}
+.modal-header, .modal-footer{
+  border: none;
+}
+.white-separator{
+  width: 100%;
+  border-top: 2px solid white;
+}
+.grey-separator{
+  width: 100%;
+  border-top: 2px solid #EEEEEE;
+}
+.modal-inside{
+  width: 60%;
+  margin: 10% auto;
+}
+.modal-body label{
+font-weight: 400;
+}
+#joinCall{
+  border-radius: 0;
+  font-weight: 700;
+  float: left;
+  background: #0000FF;
+  color: white;
+  font-size: 2rem;
+  padding: 0.35em 1.5em;
+}
+#loginCall{
+  border-radius: 0;
+  font-weight: 700;
+  float: left;
+  background: #0000FF;
+  color: white;
+  font-size: 2rem;
+  padding: 0.35em 1.5em;
+}
+#join input{
+  border-bottom: solid 2px #c9c9c9;
+  transition: border 0.3s;
+  box-shadow:none;
+  width: 80%;
+  border-radius: 0;
+  border: none;
+  background: white;
+}
+#join input:focus{ 
+  border-bottom: solid 2px #0000FF;
+}
+#login input{ 
+  border-bottom: solid 2px #c9c9c9;
+  transition: border 0.3s;
+  box-shadow:none;
+  width: 80%;   
+  border-radius: 0;
+  box-shadow: 0;
+  border: 0;
+  background: #EEEEEE;
 }
 
-.modal-message {
-  margin: 0;
+#login input:focus{ 
+  border-bottom: solid 2px #0000FF;
 }
