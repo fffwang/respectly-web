@@ -132,6 +132,10 @@ router.post('/signin', function (req, res, next) {
       res.header('Content-Type', 'application/json');
       res.header('content-length', Buffer.byteLength(JSON.stringify({"message": msg.error.INCORRECT_PASSWORD})));
       res.end(JSON.stringify({"message": msg.error.INCORRECT_PASSWORD}));
+    } else if (!docUsr.isAuthenticated) {
+      res.header('Content-Type', 'application/json');
+      res.header('content-length', Buffer.byteLength(JSON.stringify({"message": msg.error.NOT_AUTHENTICATED})));
+      res.end(JSON.stringify({"message": msg.error.NOT_AUTHENTICATED}));
     } else {
       req.session.email = email;
       res.header('Content-Type', 'application/json');
