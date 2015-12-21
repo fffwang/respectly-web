@@ -237,7 +237,10 @@ min-height: 100%;
 	font-style: italic;
 }
 .landing-banner h4{
-	font-size: 200%;
+	font-size: 160%;
+  line-height: 140%;
+  font-style: italic;
+  font-family: "Hanna";
 }
 
 /*Sub Mains*/
@@ -406,21 +409,22 @@ font-weight: 400;
   font-size: 2rem;
   padding: 0.35em 1.5em;
 }
+#join input:focus{ 
+  border-bottom: solid 2px #0000FF;
+}
 #join input{
   border-bottom: solid 2px #c9c9c9;
-  transition: border 0.3s;
+  transition: border 0.1s;
   box-shadow:none;
   width: 80%;
   border-radius: 0;
   border: none;
   background: white;
 }
-#join input:focus{ 
-  border-bottom: solid 2px #0000FF;
-}
+
 #login input{ 
   border-bottom: solid 2px #c9c9c9;
-  transition: border 0.3s;
+  transition: border 0.1s;
   box-shadow:none;
   width: 80%;   
   border-radius: 0;
