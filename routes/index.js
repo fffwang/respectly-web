@@ -61,7 +61,7 @@ router.post('/signup', function (req, res, next) {
   var email = user.email;
   var query = _$usr
     .findOne({'profile.email': email})
-    .select('profile')
+    .select('id profile')
     .sort('profile.email')
     .lean(true);
 
@@ -80,7 +80,7 @@ router.post('/signup', function (req, res, next) {
 
         var to = docUsr.profile.email
           , subject = "Respectly 이메일 인증 메일"
-          , url = "http://localhost:3000"
+          , url = "http://localhost:3000/authenticate/?code=" + docUsr.id
           , content = '<br>Respectly에 가입해주셔서 감사합니다. <br>' +
                       '<br>아래 링크를 눌러주세요.<br><br>' +
                       '<a href=' + url + '>Click</a><br><br>';
@@ -91,6 +91,22 @@ router.post('/signup', function (req, res, next) {
           res.end(JSON.stringify({"message": "E-mail sent."}));
         });
       });
+    }
+  });
+});
+
+router.get('/authenticate', function (req, res, next) {
+  var code = req.query.code;
+
+  _$usr.findByIdAndUpdate(code, {$set: {'isAuthenticated': true}}, function (err, docUsr) {
+    if (err) return next(err);
+
+    if (!docUsr) {
+      res.header('Content-Type', 'application/json');
+      res.header('content-length', Buffer.byteLength(JSON.stringify({"message": msg.error.INVALID_ID})));
+      res.end(JSON.stringify({"message": msg.error.INVALID_ID}));
+    } else {
+      return res.redirect('/');
     }
   });
 });
