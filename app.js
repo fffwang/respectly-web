@@ -75,7 +75,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
-/*
+
 app.use(session({
   store: new RedisStore,
   secret: 'I respect you',
@@ -83,7 +83,7 @@ app.use(session({
   saveUninitialized: true,
   cookie: { maxAge: 86400000 }
 }));
-*/
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(__dirname + '/public/images/favicon.ico'));

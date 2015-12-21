@@ -34,15 +34,15 @@ $(function () {
   function getUserInfo(type) {
     if (type === 'join') {
       return {
-        id: $('#join-id').val(),
-        password: $('#join-password').val(),
         email: $('#join-email').val(),
+        password: $('#join-password').val(),
+        portalID: $('#join-portal-id').val(),
         studentNumber: $('#join-student-number').val(),
         name: $('#join-name').val()
       };
     } else {
       return {
-        id: $('#login-id').val(),
+        email: $('#login-email').val(),
         password: $('#login-password').val()
       }
     }

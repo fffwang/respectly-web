@@ -15,7 +15,6 @@ var generateUser = function (user) {
       studentNumber: parseInt(user.studentNumber),
       email: user.email || ''
     },
-    id: user.id,
     password: user.password
   };
 
@@ -98,13 +97,12 @@ router.post('/signup', function (req, res, next) {
 
 router.post('/signin', function (req, res, next) {
   var user = req.body,
-    id = user.id,
+    email = user.email,
     password = user.password;
 
   // check exist user
   var query = _$usr
-    .findOne({'id': id})
-    .select('id password')
+    .findOne({'profile.email': email})
     .lean(true);
 
   query.exec(function (err, docUsr) {
@@ -119,7 +117,7 @@ router.post('/signin', function (req, res, next) {
       res.header('content-length', Buffer.byteLength(JSON.stringify({"message": msg.error.INCORRECT_PASSWORD})));
       res.end(JSON.stringify({"message": msg.error.INCORRECT_PASSWORD}));
     } else {
-      req.session.id = id;
+      req.session.email = email;
       res.header('Content-Type', 'application/json');
       res.header('content-length', Buffer.byteLength(JSON.stringify({"message": msg.success.SIGNIN})));
       res.end(JSON.stringify({"message": msg.success.SIGNIN}));
