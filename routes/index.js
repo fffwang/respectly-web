@@ -15,7 +15,6 @@ var generateUser = function (user) {
       studentNumber: parseInt(user.studentNumber),
       email: user.email || ''
     },
-    id: user.id,
     password: user.password
   };
 
@@ -62,7 +61,7 @@ router.post('/signup', function (req, res, next) {
   var email = user.email;
   var query = _$usr
     .findOne({'profile.email': email})
-    .select('profile')
+    .select('id profile')
     .sort('profile.email')
     .lean(true);
 
@@ -81,7 +80,7 @@ router.post('/signup', function (req, res, next) {
 
         var to = docUsr.profile.email
           , subject = "Respectly 이메일 인증 메일"
-          , url = "http://localhost:3000"
+          , url = "http://localhost:3000/authenticate/?code=" + docUsr.id
           , content = '<br>Respectly에 가입해주셔서 감사합니다. <br>' +
                       '<br>아래 링크를 눌러주세요.<br><br>' +
                       '<a href=' + url + '>Click</a><br><br>';
@@ -96,15 +95,30 @@ router.post('/signup', function (req, res, next) {
   });
 });
 
+router.get('/authenticate', function (req, res, next) {
+  var code = req.query.code;
+
+  _$usr.findByIdAndUpdate(code, {$set: {'isAuthenticated': true}}, function (err, docUsr) {
+    if (err) return next(err);
+
+    if (!docUsr) {
+      res.header('Content-Type', 'application/json');
+      res.header('content-length', Buffer.byteLength(JSON.stringify({"message": msg.error.INVALID_ID})));
+      res.end(JSON.stringify({"message": msg.error.INVALID_ID}));
+    } else {
+      return res.redirect('/');
+    }
+  });
+});
+
 router.post('/signin', function (req, res, next) {
   var user = req.body,
-    id = user.id,
+    email = user.email,
     password = user.password;
 
   // check exist user
   var query = _$usr
-    .findOne({'id': id})
-    .select('id password')
+    .findOne({'profile.email': email})
     .lean(true);
 
   query.exec(function (err, docUsr) {
@@ -118,8 +132,12 @@ router.post('/signin', function (req, res, next) {
       res.header('Content-Type', 'application/json');
       res.header('content-length', Buffer.byteLength(JSON.stringify({"message": msg.error.INCORRECT_PASSWORD})));
       res.end(JSON.stringify({"message": msg.error.INCORRECT_PASSWORD}));
+    } else if (!docUsr.isAuthenticated) {
+      res.header('Content-Type', 'application/json');
+      res.header('content-length', Buffer.byteLength(JSON.stringify({"message": msg.error.NOT_AUTHENTICATED})));
+      res.end(JSON.stringify({"message": msg.error.NOT_AUTHENTICATED}));
     } else {
-      req.session.id = id;
+      req.session.email = email;
       res.header('Content-Type', 'application/json');
       res.header('content-length', Buffer.byteLength(JSON.stringify({"message": msg.success.SIGNIN})));
       res.end(JSON.stringify({"message": msg.success.SIGNIN}));
