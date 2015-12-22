@@ -62,7 +62,7 @@ $(function () {
       dataType: 'json',
       data: userInfo
     }).done(function(res){
-      if (res.message.toLowerCase() === "successfully signed in.") {
+      if (res.message.toLowerCase() === "successfully signed up.") {
         window.location.href = "/";
       } else {
         alert(res.message);

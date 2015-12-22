@@ -50,6 +50,10 @@ var user = new schema({
     type: Boolean,
     default: false
   },
+  authCode: {
+    type: String,
+    required: true
+  },
   joinedAt: {
     type: Date,
     default: Date.now,
