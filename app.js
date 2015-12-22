@@ -81,6 +81,8 @@ app.use(session({
   saveUninitialized: true,
   cookie: { maxAge: 86400000 }
 }));
+
+// Redis continually emits the error, changed express-session
 /*
 app.use(session({
   store: new RedisStore,
