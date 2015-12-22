@@ -1,8 +1,7 @@
 extends ./layout.jade
 
-- var id = session.id;
-
 block navigation
+  - var email = session.email;
   header
     nav.mainnav
       h1.site-logo
@@ -18,7 +17,7 @@ block navigation
           a(href="#") START
       audio#audio(loop autoplay src="/music/11.mp3")
       ul.right
-        if id
+        if email
           li
             a(href="/signout") LOGOUT
         else
@@ -41,7 +40,7 @@ block navigation
         li
           a(href="#") START
       ul.right
-        if id
+        if email
           li
             a(href="/signout") LOGOUT
         else

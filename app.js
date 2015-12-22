@@ -22,7 +22,7 @@
 
 var express       = require('express');
 var session       = require('express-session');
-var RedisStore    = require('connect-redis')(session);
+// var RedisStore    = require('connect-redis')(session);
 var path          = require('path');
 var favicon       = require('serve-favicon');
 var logger        = require('morgan');
@@ -56,7 +56,6 @@ mongoose.connection.on('open', function () {
   console.log('Connection opened to mongodb!');
 });
 
-
 /**
  * View engine setup
  * ==================================
@@ -77,23 +76,29 @@ app.use(cookieParser());
 
 
 app.use(session({
+  secret: 'I respect you',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { maxAge: 86400000 }
+}));
+/*
+app.use(session({
   store: new RedisStore,
   secret: 'I respect you',
   resave: true,
   saveUninitialized: true,
   cookie: { maxAge: 86400000 }
 }));
+*/
 
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
-
 app.use(function(req, res, next) {
   res.locals.session = req.session;
   next();
 });
-
 
 /**
  * Route handlers
@@ -113,6 +118,7 @@ app.use(function (req, res, next) {
  * Error handlers
  * ==================================
  */
+/*
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development' || app.get('env') === 'localhost') {
@@ -134,6 +140,7 @@ app.use(function (err, req, res, next) {
     error: {}
   });
 });
+*/
 
 
 module.exports = app;

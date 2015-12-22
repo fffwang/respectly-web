@@ -61,8 +61,12 @@ $(function () {
       url: "/signup",
       dataType: 'json',
       data: userInfo
-    }).done(function(msg){
-      console.log(msg);
+    }).done(function(res){
+      if (res.message.toLowerCase() === "successfully signed in.") {
+        window.location.href = "/";
+      } else {
+        alert(res.message);
+      }
     });
   });
 
@@ -79,8 +83,12 @@ $(function () {
       url: "/signin",
       dataType: "json",
       data: userInfo
-    }).done(function(msg){
-      console.log(msg);
+    }).done(function(res){
+      if (res.message.toLowerCase() === "successfully signed in.") {
+        window.location.href = "/";
+      } else {
+        alert(res.message);
+      }
     });
   });
 });

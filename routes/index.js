@@ -11,7 +11,7 @@ var generateUser = function (user) {
   var obj = {
     profile: {
       name: user.name || 'Respect.ly',
-      department: user.department || '엿같은경영대학',
+      department: user.department || '',
       studentNumber: parseInt(user.studentNumber),
       email: user.email || ''
     },
@@ -51,7 +51,6 @@ var sendEmail = function (to, subject, content, cb) {
 };
 
 
-/* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index', {title: 'Respect.ly'}); 
 });
@@ -145,7 +144,7 @@ router.post('/signin', function (req, res, next) {
   });
 });
 
-router.get('/signout', function(req, res, next) {
+router.get('/signout', function (req, res, next) {
   req.session.destroy();
   return res.redirect('/');
 });
@@ -158,7 +157,7 @@ router.post('/email', function (req, res, next) {
                 '<br>아래 링크를 눌러주세요.<br><br>' +
                 '<a href=' + url + '>Click</a><br><br>';
   
-  sendEmail(to, subject, content, function(){
+  sendEmail(to, subject, content, function() {
     res.header('Content-Type', 'application/json');
     res.header('content-length', Buffer.byteLength(JSON.stringify({"message": "E-mail sent."})));
     res.end(JSON.stringify({"message": "E-mail sent."}));
