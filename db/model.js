@@ -11,7 +11,7 @@ var user = new schema({
       required: true
     },
     department: {
-      type: String,
+      type: Number,
       required: true
     },
     studentNumber: {
