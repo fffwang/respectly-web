@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var nodemailer = require('nodemailer');
+var uuid = require('node-uuid');
 
 var _$usr = require('../db/model').user;
 
@@ -11,10 +12,11 @@ var generateUser = function (user) {
   var obj = {
     profile: {
       name: user.name || 'Respect.ly',
-      department: user.department || '엿같은경영대학',
+      department: user.department || '단과대학',
       studentNumber: parseInt(user.studentNumber),
-      email: user.email || ''
+      email: user.email || '',
     },
+    authCode: uuid.v1(),
     password: user.password
   };
 
@@ -51,7 +53,6 @@ var sendEmail = function (to, subject, content, cb) {
 };
 
 
-/* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index', {title: 'Respect.ly'}); 
 });
@@ -78,17 +79,18 @@ router.post('/signup', function (req, res, next) {
       _$usr.create(usrGen, function (err, docUsr) {
         if (err) return next(err);
 
+        req.session.email = email;
         var to = docUsr.profile.email
           , subject = "Respectly 이메일 인증 메일"
-          , url = "http://localhost:3000/authenticate/?code=" + docUsr.id
+          , url = "http://localhost:3000/authenticate?code=" + docUsr.authCode + "&id=" + docUsr.id
           , content = '<br>Respectly에 가입해주셔서 감사합니다. <br>' +
                       '<br>아래 링크를 눌러주세요.<br><br>' +
                       '<a href=' + url + '>Click</a><br><br>';
 
         sendEmail(to, subject, content, function(){
           res.header('Content-Type', 'application/json');
-          res.header('content-length', Buffer.byteLength(JSON.stringify({"message": "E-mail sent."})));
-          res.end(JSON.stringify({"message": "E-mail sent."}));
+          res.header('content-length', Buffer.byteLength(JSON.stringify({"message": msg.success.SIGNUP})));
+          res.end(JSON.stringify({"message": msg.success.SIGNUP}));
         });
       });
     }
@@ -96,17 +98,24 @@ router.post('/signup', function (req, res, next) {
 });
 
 router.get('/authenticate', function (req, res, next) {
+  var id = req.query.id;
   var code = req.query.code;
 
-  _$usr.findByIdAndUpdate(code, {$set: {'isAuthenticated': true}}, function (err, docUsr) {
+  _$usr.findById(id, function (err, docUsr) {
     if (err) return next(err);
 
     if (!docUsr) {
       res.header('Content-Type', 'application/json');
       res.header('content-length', Buffer.byteLength(JSON.stringify({"message": msg.error.INVALID_ID})));
       res.end(JSON.stringify({"message": msg.error.INVALID_ID}));
+    } else if (code !== docUsr.authCode) {
+      res.header('Content-Type', 'application/json');
+      res.header('content-length', Buffer.byteLength(JSON.stringify({"message": msg.error.INVALID_CODE})));
+      res.end(JSON.stringify({"message": msg.error.INVALID_CODE}));
     } else {
-      return res.redirect('/');
+      docUsr.update({ isAuthenticated: true }, function (err, raw) {
+        return res.redirect('/');
+      });
     }
   });
 });
@@ -145,7 +154,7 @@ router.post('/signin', function (req, res, next) {
   });
 });
 
-router.get('/signout', function(req, res, next) {
+router.get('/signout', function (req, res, next) {
   req.session.destroy();
   return res.redirect('/');
 });
@@ -158,7 +167,7 @@ router.post('/email', function (req, res, next) {
                 '<br>아래 링크를 눌러주세요.<br><br>' +
                 '<a href=' + url + '>Click</a><br><br>';
   
-  sendEmail(to, subject, content, function(){
+  sendEmail(to, subject, content, function() {
     res.header('Content-Type', 'application/json');
     res.header('content-length', Buffer.byteLength(JSON.stringify({"message": "E-mail sent."})));
     res.end(JSON.stringify({"message": "E-mail sent."}));

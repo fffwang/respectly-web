@@ -1,17 +1,25 @@
 
 extends ./layout.jade
 
-- var id = session.id;
-
 block navigation
+  - var email = session.email;
   header
-    nav
-      .mainnav
-        h1.site-logo
-          a.logo(href="/")
-            img(alt="Respect.ly" id="mlogo" src="/images/wl.png")
+    nav.mainnav
+      h1.site-logo
+        a.logo(href="/")
+          img(alt="Respect.ly" id="mlogo" src="/images/wl.png")
 
-        ul.left
+      ul.left
+        li
+          a(href='#') ABOUT
+        li
+          a(href="#") START
+      audio#audio(loop autoplay src="/music/11.mp3")
+      ul.right
+        if email
+          li
+            a(href="/signout") LOGOUT
+        else
           li
             a(href='#') ABOUT
           li
@@ -60,7 +68,7 @@ block navigation
         li
           a(href="#") START
       ul.right
-        if id
+        if email
           li
             a(href="/signout") LOGOUT
         else
