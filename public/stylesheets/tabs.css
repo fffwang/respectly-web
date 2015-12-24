@@ -1,0 +1,51 @@
+.tabs{
+  position: absolute;
+  top: 140%;
+  width: 100%;
+  height: 10%;
+  background-color: #F7FAFA;
+}
+.tabs ul{
+  float:left;
+  padding-left: 0px;
+  height: 80px;
+}
+.tabs li{
+  display: inline;
+  height: 80px
+}
+.tabs a{
+  height: 80px
+  top:40px;
+  padding: 28px 20px;
+}
+
+#campaign a{
+  height: 80px;
+  color: red;
+  margin-left: 10%
+}
+.commentdiv{
+  position: absolute;
+  top: 150%;
+  width: 100%;
+  height: 200%;
+  background-color: #0085FF;
+  display: none;
+}
+.supportdiv{
+  position: absolute;
+  top: 150%;
+  width: 100%;
+  height: 200%;
+  background-color: #FFB549;
+  display: none;
+}
+.participatediv{
+  position: absolute;
+  top: 150%;
+  width: 100%;
+  height: 200%;
+  background-color: #EDF178;
+  display: none;
+}

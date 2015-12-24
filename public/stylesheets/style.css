@@ -370,6 +370,7 @@ width: 20%;
 	width: 100%;
 	height: 200%;
 	background-color: #B1C5FF;
+  display: none;
 }
 .project-wrap {
   position: relative;
@@ -388,15 +389,6 @@ width: 20%;
 .project-content p{
 
 }
-.tabs{
-  position: absolute;
-  top: 140%;
-  width: 100%;
-  height: 10%;
-  background-color: #F7FAFA;
-}
-
-
 .fourthmain{
 	position: absolute;
 	top: 350%;
