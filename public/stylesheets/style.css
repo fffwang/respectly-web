@@ -65,11 +65,34 @@ nav.mainnav:after{
 	background: none repeat scroll 0% 0% rgba(255, 255, 255, 0.6) !important;
 	color: #333;
 }
+#menu-icon{
+  display: none;
+}
+.down-arrow{
+  margin-bottom: -3px;
+  margin-left: .4em;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent;
+  border-top-color: white;
+}
+#menu-icon:hover .down-arrow{
+  border-top-color: #333;
+}
+
+#drop{
+display: none;
+}
+
 .site-logo{
 	float: left;
 	padding: 11px;
 	margin: 0;
 	width: 250px;
+  z-index: 999;
 }
 a.logo{
 	display: inline-block;
@@ -99,15 +122,32 @@ ul.left > li > a{
 }
 ul.right > li > a{
 }
+.dropmenu{
+  display: none;
+}
 /*media query for nav*/
 @media only screen and (max-width: 850px){
-  ul.left, ul.right{
+  ul.left{
   display: none;
+}
+ul.right > li {
+  display: none;
+}
+#music-icon, #menu-icon{
+  display: block;
+  float : right;
 }
 ul.small-nav{
   display: inline-block;
 }
-
+.dropmenu {
+  display: block;
+}
+.dropmenu ul {
+  width: 100%;
+  height: 100%;
+  background-color: blue;
+}
 }
 
 /*Sub Nav*/
