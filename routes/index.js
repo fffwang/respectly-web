@@ -5,6 +5,7 @@ var nodemailer = require('nodemailer');
 var uuid = require('node-uuid');
 
 var _$usr = require('../db/model').user;
+var _$cmt = require('../db/model').comment;
 
 var msg = require('../message');
 
@@ -54,7 +55,9 @@ var sendEmail = function (to, subject, content, cb) {
 
 
 router.get('/', function (req, res, next) {
-  res.render('index', {title: 'Respect.ly'}); 
+  var render = {title: 'Respect.ly'};
+  
+  res.render('index', render); 
 });
 
 router.post('/signup', function (req, res, next) {
@@ -171,6 +174,22 @@ router.post('/email', function (req, res, next) {
     res.header('Content-Type', 'application/json');
     res.header('content-length', Buffer.byteLength(JSON.stringify({"message": "E-mail sent."})));
     res.end(JSON.stringify({"message": "E-mail sent."}));
+  });
+});
+
+router.get('/comments', function (req, res, next) {
+  var comment = req.query;
+  
+  var query = _$cmt
+    .find({})
+    .lean(true);
+
+  var render = {title: 'Respect.ly', tab: 'comments'};
+  
+  query.exec(function (err, comments) {
+    render.comments = comments;
+    
+    return res.render('index', render);
   });
 });
 

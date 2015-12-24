@@ -68,7 +68,7 @@ block content
             br
           .modal-footer
             button#loginCall(type="button" data-dismiss="modal") Log in
-            button#resendMail(type="button" data-dismiss="modal") Resend Confirmation
+            button#resendMail(type="button" data-dismiss="modal") Resend Confirmation Email
 
     
   section.brief-container
@@ -98,6 +98,16 @@ block content
           //-     .brief-project-progressmask
           //-       .brief-project-progressbar
 
+  section.tabs
+    ul
+      li
+        a(href="#")#campaign Campaign        
+      li
+        a(href="#")#comment Comments
+      li
+        a(href="#")#support Supporters
+      li
+        a(href="#")#participate Participants
 
   section.project
     .project-wrap
@@ -109,6 +119,14 @@ block content
   section.chart
     canvas#supporters-chart
     canvas#participants-chart
+
+  //- 파랑색 바탕
+  section.commentdiv
+  //- 자몽색 바탕
+  section.supportdiv
+  //- 노랑색 바탕
+  section.participatediv
+
       
 
   section.fourthmain
