@@ -1,3 +1,4 @@
+
 extends ./layout.jade
 
 block navigation
@@ -7,9 +8,7 @@ block navigation
       h1.site-logo
         a.logo(href="/")
           img(alt="Respect.ly" id="mlogo" src="/images/wl.png")
-      //- ul.small-nav
-      //-   li
-      //-     a(href='#') MENU
+
       ul.left
         li
           a(href='#') ABOUT
@@ -22,13 +21,42 @@ block navigation
             a(href="/signout") LOGOUT
         else
           li
-            a(href="#" data-toggle="modal" data-target="#join") JOIN
+            a(href='#') ABOUT
           li
-            a(href="#" data-toggle="modal" data-target="#login") LOGIN
-            
-        li
-          a(href="/").music
-            span.glyphicon.glyphicon-pause.playmode(aria-hidden="true")
+            a(href="#") START
+
+        audio#audio(loop autoplay src="/music/11.mp3")
+
+        ul.right
+          if id
+            li
+              a(href="/signout") LOGOUT
+          else
+            li
+              a(href="#" data-toggle="modal" data-target="#join") JOIN
+            li
+              a(href="#" data-toggle="modal" data-target="#login") LOGIN              
+          li#music-icon
+            a(href="/").music
+              span.glyphicon.glyphicon-pause.playmode(aria-hidden="true")
+          li#menu-icon
+            a(href="#") MENU
+              .down-arrow      
+        .dropmenu
+          ul
+            li
+              a(href='#') ABOUT
+            li
+              a(href="#") START
+            if id
+              li
+                a(href="/signout") LOGOUT
+            else
+              li
+                a(href="#" data-toggle="modal" data-target="#join") JOIN
+              li
+                a(href="#" data-toggle="modal" data-target="#login") LOGIN              
+
   .subheader
     nav.subnav
       h1.site-logo
