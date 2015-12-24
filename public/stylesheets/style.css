@@ -473,7 +473,7 @@ font-weight: 400;
 #join input:focus{ 
   border-bottom: solid 2px #0000FF;
 }
-#join input{
+#join input, #join select{
   border-bottom: solid 2px #c9c9c9;
   transition: border 0.1s;
   box-shadow:none;

@@ -14,6 +14,7 @@ $(function () {
     if (type === 'join') {
       if (!validateEmail(info.email)) messages.push("이메일 형식이 잘못되었습니다.");
       if (info.studentNumber.length !== 10) messages.push("올바른 학번의 형식이 아닙니다.");
+      if (parseInt(info.department) === -1) messages.push("단과대학은 필수 기입항목입니다.");
     }
     
     return messages.length === 0;
@@ -36,6 +37,7 @@ $(function () {
       return {
         email: $('#join-email').val(),
         password: $('#join-password').val(),
+        department: $('#join-department').val(),
         portalID: $('#join-portal-id').val(),
         studentNumber: $('#join-student-number').val(),
         name: $('#join-name').val()
