@@ -13,7 +13,7 @@ var generateUser = function (user) {
   var obj = {
     profile: {
       name: user.name || 'Respect.ly',
-      department: user.department || '단과대학',
+      department: parseInt(user.department),
       studentNumber: parseInt(user.studentNumber),
       email: user.email || '',
     },

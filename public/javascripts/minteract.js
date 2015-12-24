@@ -9,4 +9,8 @@ $(function () {
       $('.subheader').fadeIn(300);
     }
   });
+  $('#menu-icon').on('click', function(){
+    console.log('haha');
+  });
+
 });
