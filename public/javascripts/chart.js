@@ -131,25 +131,32 @@ $(function () {
     onAnimationComplete: function(){}
   };
 
-  $.ajax({
-    method: "GET",
-    url: "/charts/participants",
-    dataType: "json",
-    success: function(res) {
-      var ctxPar = $("#participants-chart").get(0).getContext("2d");
-      var parChartData = res.data;
-      var parChart = new Chart(ctxPar).Pie(parChartData, {});
-    }
+  $("#support").click(function(e) {
+    e.preventDefault();
+    $.ajax({
+      method: "GET",
+      url: "/charts/supporters",
+      dataType: "json",
+      success: function(res) {
+        var ctxSup = $("#supporters-chart").get(0).getContext("2d");
+        var supChartData = res.data;
+        var supChart = new Chart(ctxSup).Pie(supChartData, {});
+      }
+    });
   });
 
-  $.ajax({
-    method: "GET",
-    url: "/charts/supporters",
-    dataType: "json",
-    success: function(res) {
-      var ctxSup = $("#supporters-chart").get(0).getContext("2d");
-      var supChartData = res.data;
-      var supChart = new Chart(ctxSup).Pie(supChartData, {});
-    }
-  })
+  $("#participate").click(function(e) {
+    e.preventDefault();
+    $.ajax({
+      method: "GET",
+      url: "/charts/participants",
+      dataType: "json",
+      success: function(res) {
+        var ctxPar = $("#participants-chart").get(0).getContext("2d");
+        var parChartData = res.data;
+        var parChart = new Chart(ctxPar).Pie(parChartData, {});
+      }
+    });
+  });
+  
 });
