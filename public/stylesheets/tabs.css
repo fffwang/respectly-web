@@ -30,7 +30,7 @@
   top: 150%;
   width: 100%;
   height: 200%;
-  background-color: #0085FF;
+  background-color: white;
   display: none;
 }
 .supportdiv{
@@ -48,4 +48,47 @@
   height: 200%;
   background-color: #EDF178;
   display: none;
+}
+
+/* comment 창 */
+.glyphicon-chevron-up{
+  font-size: 26px;
+}
+.glyphicon-chevron-down{
+  font-size: 26px;
+}
+.commentBody{
+      background-color: rgba(87, 255, 134, 0);
+      width: 600px;
+      height: 95px;
+}
+.entryVote{
+    width: 30px;
+    height: 95px;
+    float: left;   
+    text-align: center;
+}
+.upVote{
+      width: 30px;
+      height: 30px;
+      text-align: center;
+}
+.voteNum{
+      width: 30px;
+      height: 35px;
+      font-size: 24px;
+      text-align: center;
+}
+.downVote{
+      width: 30px;
+      height: 30px;
+      text-align: center;
+}
+
+.commentBox{
+      margin-left: 30px;
+      width: 500px;
+      float: left;
+      height: 95px;
+      display: inline-block;
 }
