@@ -33,6 +33,7 @@ var mongoose      = require('mongoose');
 var config = require('./config');
 
 var routes      = require('./routes/index');
+var charts      = require('./routes/charts');
 var users       = require('./routes/users');
 
 var app = express();
@@ -107,6 +108,7 @@ app.use(function(req, res, next) {
  * ==================================
  */
 app.use('/', routes);
+app.use('/charts', charts);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
