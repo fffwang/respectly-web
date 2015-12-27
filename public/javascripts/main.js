@@ -1,4 +1,5 @@
 $(function () {
+var toggleFlag = 1;
   $(window).scroll(function () {
     scroll_start = $(window).scrollTop();
     var startchange = $('.brief-container');
@@ -9,8 +10,20 @@ $(function () {
       $('.subheader').fadeIn(300);
     }
   });
-  $('#menu-icon').on('click', function(){
-    console.log('haha');
+
+
+  $('.menu-toggle').on('click', function(){
+    if(toggleFlag == 1){
+      $('.full').hide();
+      toggleFlag = 0;
+    $('.dropmenu').slideDown('250');      
+    }else{
+    $('.dropmenu').slideUp('250');
+    setTimeout(function(){
+    $('.full').show();
+    }, 370);
+      toggleFlag = 1;
+    }
   });
   $('#campaign').on('click', function(){
     $('.commentdiv').hide();

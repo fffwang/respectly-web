@@ -44,7 +44,7 @@ header{
 }
 nav.mainnav{
 	background-color: transparent;
-	width: 90%;
+	width: 100%;
 	margin: 0 auto;
   	z-index: 998;
   	height: 80px;
@@ -82,13 +82,12 @@ nav.mainnav:after{
 #menu-icon:hover .down-arrow{
   border-top-color: #333;
 }
-#drop{
-display: none;
-}
+
 .site-logo{
 	float: left;
 	padding: 11px;
 	margin: 0;
+  margin-left: 3%;
 	width: 250px;
   z-index: 999;
 }
@@ -106,6 +105,7 @@ ul.left{
 	height: 80px;
 }
 ul.right{
+  margin-right: 3%;
 	float: right;
 	height: 80px;
 }
@@ -127,6 +127,7 @@ ul.right > li > a{
   ul.left{
   display: none;
 }
+
 ul.right > li {
   display: none;
 }
@@ -138,9 +139,10 @@ ul.small-nav{
   display: inline-block;
 }
 .dropmenu {
-  display: block;
+  display: none;
+  z-index: 99;
 }
-.dropmenu ul {
+.dropmenu ul li{
   width: 100%;
   height: 100%;
   background-color: blue;
