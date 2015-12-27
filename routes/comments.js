@@ -20,6 +20,7 @@ router.get('/', function (req, res, next) {
 
   var query = _$cmt
     .find({})
+    .populate('_writer')
     .lean(true);
   
   query.exec(function (err, comments) {
