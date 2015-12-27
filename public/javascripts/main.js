@@ -34,12 +34,30 @@ var toggleFlag = 1;
   });
 
   $('#comment').on('click', function(){
+    $.ajax({
+      type: 'GET',
+      url: '/comments',
+      dataType: 'json',
+      success: function (data) {
+        data.comments.forEach(function(comment) {
+          $('.commentdiv').append(
+            '<div class="commentBody">' +
+              '<div class="commentBox">' +
+                '<div class="name">' + comment._writer + '</div>' +
+                '<div class="comment-content">' + comment.body + '</div>' +
+                '<div class="comment-delete">수정 버튼</div>' +
+                '<div class="comment-delete">삭제 버튼</div>' +
+              '</div>' +
+            '</div>');
+        });
+      }
+    });
+    
     $('.project').hide();
     $('.supportdiv').hide();
     $('.participatediv').hide();
     $('.commentdiv').show();
         console.log('2')
-
   });
 
   $('#support').on('click', function(){

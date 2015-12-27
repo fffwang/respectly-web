@@ -15,7 +15,21 @@ var generateComment = function (comment) {
   return obj;
 };
 
-router.post('/comment/write', function (req, res, next) {
+router.get('/', function (req, res, next) {
+  var comment = req.query;
+
+  var query = _$cmt
+    .find({})
+    .lean(true);
+  
+  query.exec(function (err, comments) {
+    res.header('Content-Type', 'application/json');
+    res.header('content-length', Buffer.byteLength(JSON.stringify({"comments": comments})));
+    res.end(JSON.stringify({"comments": comments}));
+  });
+});
+
+router.post('/write', function (req, res, next) {
   var comment = req.body;
 
   var cmtGen = generateComment(comment);
@@ -23,10 +37,10 @@ router.post('/comment/write', function (req, res, next) {
   _$cmt.create(cmtGen, function (err, docCmt) {
     if (err) return next(err);
 
-    _$usr.findByIdAndUpdate(req.uid, {'$addToSet': {'_comments': docCmt._id}}, function (err, docUsr) {
+    _$usr.findByIdAndUpdate(comment.user_id, {'$addToSet': {'_comments': docCmt._id}}, function (err, docUsr) {
       if (err) return next(err);
 
-      _$pjt.findByIdAndUpdate(req.uid, {'$addToSet': {'_comments': docCmt._id}}, function (err, docUsr) {
+      _$pjt.findByIdAndUpdate(comment.project_id, {'$addToSet': {'_comments': docCmt._id}}, function (err, docUsr) {
         if (err) return next(err);
 
         res.header('Content-Type', 'application/json');
@@ -37,7 +51,7 @@ router.post('/comment/write', function (req, res, next) {
   });
 });
 
-router.post('/comment/delete', function (req, res, next) {
+router.post('/delete', function (req, res, next) {
   var comment = req.body;
   
   _$cmt.remove({ _id: req.body.id }, function(err) {
@@ -56,4 +70,6 @@ router.post('/comment/delete', function (req, res, next) {
     });
   });
 });
+
+module.exports = router;
 
