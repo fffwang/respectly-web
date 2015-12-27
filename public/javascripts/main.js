@@ -31,7 +31,6 @@ var toggleFlag = 1;
     $('.supportdiv').hide();
     $('.participatediv').hide();
     $('.project').show();
-    console.log('1')
   });
 
   $('#comment').on('click', function(e){
@@ -60,7 +59,6 @@ var toggleFlag = 1;
     $('.supportdiv').hide();
     $('.participatediv').hide();
     $('.commentdiv').show();
-        console.log('2')
   });
 
   $('#support').on('click', function(){
@@ -68,8 +66,6 @@ var toggleFlag = 1;
     $('.commentdiv').hide();
     $('.participatediv').hide();
     $('.supportdiv').show();
-        console.log('3')
-
   });
 
   $('#participate').on('click', function(){
@@ -77,7 +73,6 @@ var toggleFlag = 1;
     $('.commentdiv').hide();
     $('.supportdiv').hide();
     $('.participatediv').show();
-    console.log('4')
   });
 
 
