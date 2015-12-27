@@ -25,21 +25,40 @@ var toggleFlag = 1;
       toggleFlag = 1;
     }
   });
-  $('#campaign').on('click', function(){
+  $('#campaign').on('click', function(e){
+    e.preventDefault();
     $('.commentdiv').hide();
     $('.supportdiv').hide();
     $('.participatediv').hide();
     $('.project').show();
-    console.log('1')
   });
 
-  $('#comment').on('click', function(){
+  $('#comment').on('click', function(e){
+    e.preventDefault();
+    $.ajax({
+      type: 'GET',
+      url: '/comments',
+      dataType: 'json',
+      success: function (data) {
+        $('.commentdiv').empty();
+        data.comments.forEach(function(comment) {
+          $('.commentdiv').append(
+            '<div class="commentBody">' +
+              '<div class="commentBox">' +
+                '<div class="name">' + comment._writer.profile.name + '</div>' +
+                '<div class="comment-content">' + comment.body + '</div>' +
+                '<div class="comment-delete">수정 버튼</div>' +
+                '<div class="comment-delete">삭제 버튼</div>' +
+              '</div>' +
+            '</div>');
+        });
+      }
+    });
+    
     $('.project').hide();
     $('.supportdiv').hide();
     $('.participatediv').hide();
     $('.commentdiv').show();
-        console.log('2')
-
   });
 
   $('#support').on('click', function(){
@@ -47,8 +66,6 @@ var toggleFlag = 1;
     $('.commentdiv').hide();
     $('.participatediv').hide();
     $('.supportdiv').show();
-        console.log('3')
-
   });
 
   $('#participate').on('click', function(){
@@ -56,7 +73,6 @@ var toggleFlag = 1;
     $('.commentdiv').hide();
     $('.supportdiv').hide();
     $('.participatediv').show();
-    console.log('4')
   });
 
 
