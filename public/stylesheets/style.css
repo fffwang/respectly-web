@@ -537,3 +537,13 @@ font-weight: 400;
 #login input:focus{ 
   border-bottom: solid 2px #0000FF;
 }
+
+.name-box {
+  display: inline-block;
+  width: 200px;
+  height: 100px;
+}
+
+.name-box-text {
+  font-family: "Hanna";
+}

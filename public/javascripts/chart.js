@@ -131,6 +131,28 @@ $(function () {
     onAnimationComplete: function(){}
   };
 
+  function codeToDepartment(data) {
+    var departments = ["법과대학", "경영대학", "문과대학", "생명과학대학", "정경대학", "이과대학", "공과대학", "사범대학", "간호대학", "정보통신대학", "정보대학", "디자인조형학부", "국제학부", "미디어학부", "자유전공학부", "정보보호학부"];
+    return data === -1 ? "단과대학" : departments[data];
+  }
+
+  function renderNameEl(data) {
+    var layerEl = $('#name-list').empty();
+    for (var i = 0; i < data.length; i++) {
+      var nameEl = [
+        "<div class='name-box' style='background: " + randomColor({luminosity: 'light'}) + ";'>",
+          "<h4 class='name-box-text text-center'>",
+            codeToDepartment(data[i].profile.department),
+          "</h4>",
+          "<h3 class='name-box-text text-center'>",
+            data[i].profile.name,
+          "</h3>",
+        "</div>"
+      ].join('');
+      layerEl.append(nameEl);
+    }
+  }
+
   $("#support").click(function(e) {
     e.preventDefault();
     // Need actual pid in request url
@@ -154,7 +176,7 @@ $(function () {
       url: "/charts/participants?pid=567f9c15b075f741a91ad3a7",
       dataType: "json",
       success: function(res) {
-        
+        renderNameEl(res.data);
       }
     });
   });
