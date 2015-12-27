@@ -79,6 +79,7 @@ nav.mainnav:after{
   border-color: transparent;
   border-top-color: white;
 }
+
 #menu-icon:hover .down-arrow{
   border-top-color: #333;
 }
@@ -165,8 +166,31 @@ a.logo{
   display: inline-block;
   padding: 0px;
 }
+.site-logo{
+  float: left;
+  padding: 11px;
+  margin:0;
+  margin-left: 3%
+}
 a.logo > img{
   width: 230px;
+}
+#drop-logo{
+  margin-left: 6%;
+}
+.up-arrow{
+  margin-bottom: 3px;
+  margin-left: .4em;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent;
+  border-bottom-color: white;
+}
+#menu-icon:hover .up-arrow{
+  border-bottom-color: #333;
 }
 
 }

@@ -14,13 +14,13 @@ var toggleFlag = 1;
 
   $('.menu-toggle').on('click', function(){
     if(toggleFlag == 1){
-    $('.mainnav').hide();     
+    $('.mainnav').stop().hide();     
       toggleFlag = 0;
-    $('.dropmenu').slideDown('200'); 
+    $('.dropmenu').stop().slideDown('150'); 
     }else{
-    $('.dropmenu').slideUp('200');
+    $('.dropmenu').stop().slideUp('150');
     setTimeout(function(){
-    $('.mainnav').show();     
+    $('.mainnav').stop().show();     
     }, 400);
       toggleFlag = 1;
     }
