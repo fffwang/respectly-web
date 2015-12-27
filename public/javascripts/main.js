@@ -14,14 +14,14 @@ var toggleFlag = 1;
 
   $('.menu-toggle').on('click', function(){
     if(toggleFlag == 1){
-      $('.full').hide();
+    $('.mainnav').hide();     
       toggleFlag = 0;
-    $('.dropmenu').slideDown('250');      
+    $('.dropmenu').slideDown('200'); 
     }else{
-    $('.dropmenu').slideUp('250');
+    $('.dropmenu').slideUp('200');
     setTimeout(function(){
-    $('.full').show();
-    }, 370);
+    $('.mainnav').show();     
+    }, 400);
       toggleFlag = 1;
     }
   });

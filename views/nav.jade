@@ -1,4 +1,3 @@
-
 extends ./layout.jade
 
 block navigation
@@ -32,29 +31,31 @@ block navigation
         li#menu-icon.full.menu-toggle
           a(href="#") MENU
             .down-arrow      
-      .dropmenu
+    .dropmenu
+      ul.drop-right
         h1.site-logo
           a.logo(href="/")
             img(alt="Respect.ly" id="mlogo" src="/images/wl.png")        
-        ul
-          li#music-icon
-            a(href="/").music
-              span.glyphicon.glyphicon-pause.playmode(aria-hidden="true")
-          li#menu-icon.menu-toggle
-            a(href="#") MENU
-              .down-arrow            
+
+        li#music-icon
+          a(href="/").music
+            span.glyphicon.glyphicon-pause.playmode(aria-hidden="true")
+        li#menu-icon.menu-toggle
+          a(href="#") MENU
+            .down-arrow            
+      ul.drop-down
+        li
+          a(href='#') ABOUT
+        li
+          a(href="#") START
+        if email
           li
-            a(href='#') ABOUT
+            a(href="/signout") LOGOUT
+        else
           li
-            a(href="#") START
-          if id
-            li
-              a(href="/signout") LOGOUT
-          else
-            li
-              a(href="#" data-toggle="modal" data-target="#join") JOIN
-            li
-              a(href="#" data-toggle="modal" data-target="#login") LOGIN              
+            a(href="#" data-toggle="modal" data-target="#join") JOIN
+          li
+            a(href="#" data-toggle="modal" data-target="#login") LOGIN              
 
   .subheader
     nav.subnav
