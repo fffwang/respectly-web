@@ -538,6 +538,15 @@ font-weight: 400;
   border-bottom: solid 2px #0000FF;
 }
 
+#supporters-chart {
+  margin-top: 50px;
+}
+
+canvas {
+  width: 100% !important;
+  height: auto !important;
+}
+
 .name-box {
   display: inline-block;
   width: 200px;
