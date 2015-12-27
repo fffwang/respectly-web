@@ -133,28 +133,28 @@ $(function () {
 
   $("#support").click(function(e) {
     e.preventDefault();
+    // Need actual pid in request url
     $.ajax({
       method: "GET",
-      url: "/charts/supporters",
+      url: "/charts/supporters?pid=567f9c15b075f741a91ad3a7",
       dataType: "json",
       success: function(res) {
         var ctxSup = $("#supporters-chart").get(0).getContext("2d");
         var supChartData = res.data;
-        var supChart = new Chart(ctxSup).Pie(supChartData, {});
+        var supChart = new Chart(ctxSup).Doughnut(supChartData, {});
       }
     });
   });
 
   $("#participate").click(function(e) {
     e.preventDefault();
+    // Need actual pid in request url
     $.ajax({
       method: "GET",
-      url: "/charts/participants",
+      url: "/charts/participants?pid=567f9c15b075f741a91ad3a7",
       dataType: "json",
       success: function(res) {
-        var ctxPar = $("#participants-chart").get(0).getContext("2d");
-        var parChartData = res.data;
-        var parChart = new Chart(ctxPar).Pie(parChartData, {});
+        
       }
     });
   });

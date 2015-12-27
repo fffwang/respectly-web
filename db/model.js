@@ -93,6 +93,10 @@ var project = new schema({
       ref: 'user'
     }
   ],
+  supportersGoal: {
+    type: Number,
+    required: true
+  },
   summary: {
     type: String
   },
