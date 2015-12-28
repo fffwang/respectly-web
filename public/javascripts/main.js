@@ -41,16 +41,26 @@ var toggleFlag = 1;
       dataType: 'json',
       success: function (data) {
         $('.commentdiv').empty();
+        $('.commentdiv').append(
+          '<div class="commentinput">' +
+            '<form action="/comments/write" method="post">' +
+              '<input class="commenttextinput" type="text" name="body">' + '</input>' +
+              '<button class="btn btn-default" type="submit">제출</button>' +
+            '</form>' +
+          '</div>' +
+          '<ol class="commentbody"></ol>'
+        );
         data.comments.forEach(function(comment) {
-          $('.commentdiv').append(
-            '<div class="commentBody">' +
-              '<div class="commentBox">' +
-                '<div class="name">' + comment._writer.profile.name + '</div>' +
-                '<div class="comment-content">' + comment.body + '</div>' +
-                '<div class="comment-delete">수정 버튼</div>' +
-                '<div class="comment-delete">삭제 버튼</div>' +
-              '</div>' +
-            '</div>');
+          $('.commentbody').append(
+            '<li class="commentitem">' +
+              '<div class="userpicture"><img src="/images/profile-picture.png"/></div>' +
+              '<div class="commentbox">' +
+              '<h3 class="name">' + comment._writer.profile.name + '</h3>' +
+              '<div class="commentedit"><a href="#">edit </a></div>' +
+              '<div class="commentdelete"><a href="/comments/delete/' + comment._id + '">delete</div>' +
+              '<div class="commentcontent">' + comment.body + '</div>' +
+            '</li>'
+          );
         });
       }
     });
