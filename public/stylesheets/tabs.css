@@ -3,7 +3,10 @@
   top: 140%;
   width: 100%;
   height: 10%;
-  background-color: #F7FAFA;
+  background-color: white;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #d9d9de;
 }
 .tabs ul{
   float:left;
@@ -15,7 +18,7 @@
   height: 80px
 }
 .tabs a{
-  height: 80px
+  height: 80px;
   top:40px;
   padding: 28px 20px;
 }
@@ -46,7 +49,8 @@
   top: 150%;
   width: 100%;
   height: 200%;
-  background-color: #EDF178;
+  /*background-color: #EDF178;*/
+  background-color: #01E3E5;
   display: none;
 }
 
@@ -57,18 +61,64 @@
 .glyphicon-chevron-down{
   font-size: 26px;
 }
-.commentBody{
+.commentbody{
       background-color: rgba(87, 255, 134, 0);
-      width: 600px;
-      height: 95px;
+      width: 50%;
+      height: 100%;
+      margin: 0 auto;
 }
-.entryVote{
+.userpicture{
     width: 30px;
-    height: 95px;
+    height: 30px;
     float: left;   
     text-align: center;
 }
-.upVote{
+
+.userpicture > img{
+  margin-top: 20px;
+  width: 30px;
+  height: 30px;
+}
+.commentbox{
+      margin-left: 30px;
+      width: 500px;
+      height: 95px;
+      display: inline-block;
+      position: relative;
+}
+.commentitem{
+  width: 100%;
+  height: 95px;
+  margin-bottom: 30px;
+}
+.commentedit{
+  right: 80px;
+  top: 20px;
+  position: absolute;
+  display: inline-block;
+}
+.commentedit > a{
+color: blue;
+font-size: 1em;
+margin-right: 10%;
+text-transform: none;
+}
+h3.name{
+  width: 60%;
+  display: inline-block;
+}
+.commentdelete{
+  top: 20px;
+  right: 0px;
+  display: inline-block;
+  position: absolute;
+}
+.commentdelete > a{
+color: red;
+font-size: 1em;
+text-transform: none;
+}
+/*.upVote{
       width: 30px;
       height: 30px;
       text-align: center;
@@ -83,12 +133,5 @@
       width: 30px;
       height: 30px;
       text-align: center;
-}
+}*/
 
-.commentBox{
-      margin-left: 30px;
-      width: 500px;
-      float: left;
-      height: 95px;
-      display: inline-block;
-}
