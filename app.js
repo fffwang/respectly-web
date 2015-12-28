@@ -33,6 +33,7 @@ var mongoose      = require('mongoose');
 var config = require('./config');
 
 var routes      = require('./routes/index');
+var comments    = require('./routes/comments');
 var charts      = require('./routes/charts');
 var users       = require('./routes/users');
 
@@ -108,6 +109,7 @@ app.use(function(req, res, next) {
  * ==================================
  */
 app.use('/', routes);
+app.use('/comments', comments);
 app.use('/charts', charts);
 app.use('/users', users);
 
@@ -122,6 +124,7 @@ app.use(function (req, res, next) {
  * Error handlers
  * ==================================
  */
+
 /*
 // development error handler
 // will print stacktrace
@@ -145,6 +148,5 @@ app.use(function (err, req, res, next) {
   });
 });
 */
-
 
 module.exports = app;

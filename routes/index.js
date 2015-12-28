@@ -177,20 +177,4 @@ router.post('/email', function (req, res, next) {
   });
 });
 
-router.get('/comments', function (req, res, next) {
-  var comment = req.query;
-  
-  var query = _$cmt
-    .find({})
-    .lean(true);
-
-  var render = {title: 'Respect.ly', tab: 'comments'};
-  
-  query.exec(function (err, comments) {
-    render.comments = comments;
-    
-    return res.render('index', render);
-  });
-});
-
 module.exports = router;
