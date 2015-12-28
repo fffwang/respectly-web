@@ -15,7 +15,7 @@ var generateUser = function (user) {
       name: user.name || 'Respect.ly',
       department: parseInt(user.department),
       studentNumber: parseInt(user.studentNumber),
-      email: user.email || '',
+      email: user.email || ''
     },
     authCode: uuid.v1(),
     password: user.password
