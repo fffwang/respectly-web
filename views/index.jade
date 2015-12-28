@@ -6,16 +6,27 @@ block content
   div.video
     div.mask
     video(preload loop autoplay poster="/images/work.jpg")
-      // source(type="video/webm; codecs=vp8,vorbis" src="/videos/work.webm")
       source(type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" src="/videos/work.mp4")
 
   div.wrapper
     div.landing-banner
-      h3 We Respect You and Your Projects
+      h3 We 
+        span.blue Respect 
+        | You and Your Projects
       h4 
-        |Respect.ly는 고려대 학생들이 학교에서 펼치고 싶은 모든 프로젝트들을 지지자, 참여자들과 함께 추진할 수 있도록 도와주는 사이트입니다.
+        span.big "      
+        |&nbsp;&nbsp;지금은 아무 느낌이 안 오겠지 물론, 너 혼자 힘으론 어려울 수도 있어&nbsp;&nbsp;
+        span.big "         
         br
-        |미래에 고대생들은 지금보다 더 풍요롭고 낭만적인 학교 생활을 성취해나갈 수 있었으면 하는 바람으로 시작하게 되었습니다.
+        |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;그니까 너와 같은 사람들이 막 모여있는 곳, 그런 곳에 가봐
+        br
+        |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;여지껏 모르고 살아온 세상과 만나게 될 걸
+        br
+        |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;불가능이 하나둘씩 현실로 바뀌는 걸 난 봤지
+        br
+        |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;그건 지금도 마찬가지 
+        br
+        |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Verbal Jint. <始發點>
 
   #join.modal
     .modal-dialog
@@ -85,9 +96,14 @@ block content
           .item.active.brief-project-inside
             .brief-project-picture
             .brief-project-content 
-              h4 고대생들이 프로젝트들을 올려 지지와 참여를 모을 수 있는 Respect.ly!
+              h4 고대생들이 올린 프로젝트들에 지지자들과 참여자들을 모을 수 있는 Respect.ly!
               p.brief-project-by by Kang Won Jun + Koo Dong Hyun + Lee Sang Yoon
-              p.brief-project-explain 
+              p.brief-project-explain Respect.ly는 고려대 학생들이 학교에서 펼치고 싶은 모든 프로젝트들을 지지자, 참여자들과 
+                br 
+                |함께 추진할 수 있도록 도와주는 사이트입니다. 미래에 고대생들은 지금보다 더 풍요롭고
+                br 
+                |낭만적인 학교생활을 성취해나갈 수 있었으면 하는 바람으로 시작하게 되었습니다.
+
               .brief-project-progressbar
                 .brief-project-progressmask
               .brief-project-stats
@@ -117,24 +133,61 @@ block content
         .project-picture
         p 얼마전 성사된 '비긴어게인 영철버거' 프로젝트를 기억하십니까? 고대생이라면 절대 잊지 못할, 참 뜻깊었던 프로젝트였습니다. 폐업했던 영철버거를 다시 살리기 위해 모금을 했던 2765명의 고려대 학생들이 있었기에 지난 20일 영철버거는 재개업을 할 수 있었습니다. 여러분들에게 영철버거 프로젝트는 어떤 뭉클함이었습니까? 
         | 그것은 펀딩이 아니더라도 
+        
 
+  //- Vote 있는 댓글 창
+  //- section.commentdiv
+  //-   .commentBody
+  //-     .entryVote
+  //-       .upVote
+  //-         span.glyphicon.glyphicon-menu-up
+  //-       .voteNum 0
+  //-       .downVote
+  //-         .glyphicon.glyphicon-menu-down
+  //-     .commentBox
+  //-       .name Username
+  //-       .comment-content css는 개 노가다구나. 힘들다. 짜증난다. 
+  //-       .comment-delete 수정 버튼
+  //-       .comment-delete 삭제 버튼
 
-  //- 파랑색 바탕
   section.commentdiv
-    .commentBody
-      .entryVote
-        .upVote
-          span.glyphicon.glyphicon-menu-up
-        .voteNum 0
-        .downVote
-          .glyphicon.glyphicon-menu-down
-      .commentBox
-        .name Username
-        .comment-content css는 개 노가다구나. 힘들다. 짜증난다. 
-        .comment-delete 수정 버튼
-        .comment-delete 삭제 버튼
+    .commentinput 이게 바로 인풋이다.
+      form
+        textarea.commenttextinput
+        button(type="submit").btn.btn-default 이게 바로 역대급 서밋버튼이다.
 
-
+        
+    ol.commentbody
+      li.commentitem
+        .userpicture
+          img(src="/images/profile-picture.png")
+        .commentbox
+          h3.name Username
+          .commentdelete 
+            a(href='#') delete 
+          .commentedit 
+            a(href='#') edit 
+          .commentcontent css는 개 노가다구나. 힘들다. 짜증난다. 
+      li.commentitem
+        .userpicture
+          img(src="/images/profile-picture.png")
+        .commentbox
+          h3.name Username
+          .commentdelete 
+            a(href='#') delete 
+          .commentedit 
+            a(href='#') edit 
+          .commentcontent css는 개 노가다구나. 힘들다. 짜증난다. 
+      li.commentitem
+        .userpicture
+          img(src="/images/profile-picture.png")
+        .commentbox
+          h3.name Username
+          .commentdelete 
+            a(href='#') delete 
+          .commentedit 
+            a(href='#') edit 
+          .commentcontent css는 개 노가다구나. 힘들다. 짜증난다. 
   //- 자몽색 바탕
   section.supportdiv
     .row

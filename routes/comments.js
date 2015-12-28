@@ -31,8 +31,12 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/write', function (req, res, next) {
-  var comment = req.body;
-
+  var comment = {};
+  
+  comment._writer = req.session.id;
+  comment._project = '567f9c15b075f741a91ad3a7';
+  comment.body = req.body.body;
+  
   var cmtGen = generateComment(comment);
 
   _$cmt.create(cmtGen, function (err, docCmt) {
