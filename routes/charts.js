@@ -26,7 +26,7 @@ router.get('/supporters', function(req, res, next) {
     if (err) return next(err);
     
     var left = docPjt.supportersGoal - docPjt._supporters.length;
-    var data = [
+    var chartData = [
       {
         value: docPjt._supporters.length,
         color: "#F7464A",
@@ -40,7 +40,12 @@ router.get('/supporters', function(req, res, next) {
         label: "남은 지지자 수"
       }
     ];
-    return res.status(200).json({ data: data });
+    return res.status(200).json(
+      {
+        chartData: chartData,
+        supportersCount: docPjt._supporters.length,
+        supportersGoal: docPjt.supportersGoal
+      });
   });
 });
 
