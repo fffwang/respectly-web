@@ -123,12 +123,17 @@ ul.right > li > a{
 .dropmenu{
   display: none;
 }
+.drop-down{
+  display: none;
+}
 /*media query for nav*/
 @media only screen and (max-width: 850px){
   ul.left{
   display: none;
 }
-
+.drop-down{
+  display: block;
+}
 ul.right > li {
   display: none;
 }
@@ -327,66 +332,6 @@ min-height: 100%;
 }
 
 /*Sub Mains*/
-
-/*Brief Project Explain*/
-
-.brief-container{
-	position: absolute;
-	top: 100%;
-	width: 100%;
-	height: 40%;
-	background-color: #E8F6FF;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: #d9d9de;
-  border-top-width: 1px;
-  border-top-style: solid;
-  border-top-color: #d9d9de;
-  }
-.brief-project{
-  position: relative;
-  top: -60px;
-  width: 60%;
-  height: 350px;
-  margin: 0 auto;
-  background-color: #F7FAFA;
-  padding: 20px;
-}
-.brief-project-inside{
-  width: 100%;
-  height: 100%;
-  background-color: #F7FAFA;
-}
-.brief-project-picture{
-  z-index: 10;
-  width: 320px;
-  height: 240px;
-  background-size: 320px 240px;
-  background-image: url('/images/kustudents.jpg');
-}
-#lion.brief-project-picture{
-  z-index: 10;
-  width: 320px;
-  height: 240px;
-  background-size: 320px 240px;
-  background-image: url('/images/likelion.jpg');
-}
-.brief-project-content{
-
-}
-.brief-project-collaborate{
-
-}
-.brief-project-support{
-
-}
-.brief-project-progressmask{
-
-}
-
-.brief-project-progressbar{
-
-}
 
 /*#leftarrow{
 width: 20%;
