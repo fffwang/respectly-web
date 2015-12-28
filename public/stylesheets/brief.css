@@ -5,13 +5,10 @@
   top: 100%;
   width: 100%;
   height: 40%;
-  background-color: #E8F6FF;
+  background-color: #081245;
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: #d9d9de;
-  border-top-width: 1px;
-  border-top-style: solid;
-  border-top-color: #d9d9de;
   }
 .brief-project{
   position: relative;
@@ -19,7 +16,7 @@
   width: 70%;
   height: 350px;
   margin: 0 auto;
-  background-color: #F7FAFA;
+  background-color: #E8F6FF;
   padding: 20px;
 }
 .brief-project-inside{
@@ -49,19 +46,30 @@
 }
 .brief-project-content{
   float: left;
-  margin-left: 5%;
+  margin-left: 3%;
   margin-top: 3%;
   font-style: bold;
 }
 .brief-project-explain{
-}
-
-.brief-project-progressmask{
-
+  margin-bottom: 30px;
 }
 
 .brief-project-progressbar{
+  height: 8px;
+  border-radius: 4px;
+  position: relative;
+  background-color: #d9d9de;
 }
+
+.brief-project-progressmask{
+  border-radius: 4px;
+  background-color: #2bde73;
+  height: 100%;
+  width: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
 .brief-project-stats{
 
 }
