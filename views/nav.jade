@@ -1,7 +1,8 @@
 extends ./layout.jade
 
 block navigation
-  - var email = session.email;
+  - var id = session.uid;
+  
   header
     nav.mainnav
       h1.site-logo.full
@@ -48,7 +49,7 @@ block navigation
           a(href='#') ABOUT
         li
           a(href="#") START
-        if email
+        if id
           li
             a(href="/signout") LOGOUT
         else
@@ -68,7 +69,7 @@ block navigation
         li
           a(href="#") START
       ul.right
-        if email
+        if id
           li
             a(href="/signout") LOGOUT
         else

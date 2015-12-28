@@ -81,8 +81,8 @@ router.post('/signup', function (req, res, next) {
 
       _$usr.create(usrGen, function (err, docUsr) {
         if (err) return next(err);
-
-        req.session.email = email;
+        
+        req.session.uid = docUsr._id;
         var to = docUsr.profile.email
           , subject = "Respectly 이메일 인증 메일"
           , url = "http://localhost:3000/authenticate?code=" + docUsr.authCode + "&id=" + docUsr.id
@@ -149,7 +149,7 @@ router.post('/signin', function (req, res, next) {
       res.header('content-length', Buffer.byteLength(JSON.stringify({"message": msg.error.NOT_AUTHENTICATED})));
       res.end(JSON.stringify({"message": msg.error.NOT_AUTHENTICATED}));
     } else {
-      req.session.email = email;
+      req.session.uid = docUsr._id;
       res.header('Content-Type', 'application/json');
       res.header('content-length', Buffer.byteLength(JSON.stringify({"message": msg.success.SIGNIN})));
       res.end(JSON.stringify({"message": msg.success.SIGNIN}));
