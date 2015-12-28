@@ -141,16 +141,45 @@ $(function () {
     for (var i = 0; i < data.length; i++) {
       var nameEl = [
         "<div class='name-box' style='background: " + randomColor({luminosity: 'light'}) + ";'>",
-          "<h4 class='name-box-text text-center'>",
+          "<h4 class='hanna text-center'>",
             codeToDepartment(data[i].profile.department),
           "</h4>",
-          "<h3 class='name-box-text text-center'>",
+          "<h3 class='hanna text-center'>",
             data[i].profile.name,
           "</h3>",
         "</div>"
       ].join('');
       layerEl.append(nameEl);
     }
+  }
+
+  function renderSupTextEl(count, goal) {
+    var layerEl = $('#supporters-right').empty();
+    var textDom = [
+      "<div class='right-text-wrapper'>",
+        "<h2 class='hanna text-center'>",
+          "목표 " + goal + "명 중 " + count + "명의 지지를 받고 있습니다.",
+        "</h2>",
+      "</div>",
+      "<div>",
+        "<h1 class='hanna text-center'>",
+          "진행률: " + Math.floor(count / goal * 100) + "%",
+        "</h1>",
+      "</div>"
+    ].join('');
+    layerEl.append(textDom);
+  }
+
+  function renderParTextEl(count) {
+    var layerEl = $('#participate-right').empty();
+    var textDom = [
+      "<div class='right-text-wrapper'>",
+        "<h1 class='hanna text-center'>",
+          "총 " + count + "명이 참여 중인 프로젝트입니다.",
+        "</h1>",
+      "</div>"
+    ].join('');
+    layerEl.append(textDom);
   }
 
   $("#support").click(function(e) {
@@ -162,8 +191,9 @@ $(function () {
       dataType: "json",
       success: function(res) {
         var ctxSup = $("#supporters-chart").get(0).getContext("2d");
-        var supChartData = res.data;
+        var supChartData = res.chartData;
         var supChart = new Chart(ctxSup).Doughnut(supChartData, {});
+        renderSupTextEl(res.supportersCount, res.supportersGoal);
       }
     });
   });
@@ -177,6 +207,7 @@ $(function () {
       dataType: "json",
       success: function(res) {
         renderNameEl(res.data);
+        renderParTextEl(res.data.length);
       }
     });
   });

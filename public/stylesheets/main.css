@@ -498,6 +498,11 @@ canvas {
   height: 100px;
 }
 
-.name-box-text {
-  font-family: "Hanna";
+.right-text-wrapper {
+  margin-top: 50px;
+}
+
+/* Helper Classes */
+.hanna {
+  font-family: "Hanna", sans-serif;
 }
