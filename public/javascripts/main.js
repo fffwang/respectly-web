@@ -40,7 +40,6 @@ var toggleFlag = 1;
       url: '/comments',
       dataType: 'json',
       success: function (data) {
-        $('.commentdiv').empty();
         data.comments.forEach(function(comment) {
           $('.commentdiv').append(
             '<div class="commentBody">' +
