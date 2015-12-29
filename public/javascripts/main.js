@@ -1,5 +1,5 @@
 $(function () {
-var toggleFlag = 1;
+  var toggleFlag = 1;
   $(window).scroll(function () {
     scroll_start = $(window).scrollTop();
     var startchange = $('.brief-container');
@@ -137,5 +137,39 @@ var toggleFlag = 1;
     $('.participatediv').show();
   });
 
+  $('#project-support-btn').on('click', function(e) {
+    e.preventDefault();
+    // Must change id to proper value
+    var pid = 1;
+    var uid = 1;
+    $.ajax({
+      type: 'POST',
+      url: '/projects/join',
+      dataType: 'json',
+      data: { pid: pid, uid: uid },
+      success: function(data) {
+        alert(data.message);
+      }
+    });
+    e.stopPropagation();
+    return false;
+  });
 
+  $('#project-join-btn').on('click', function(e) {
+    e.preventDefault();
+    // Must change id to proper value
+    var pid = 1;
+    var uid = 1;
+    $.ajax({
+      type: 'POST',
+      url: '/projects/support',
+      dataType: 'json',
+      data: { pid: pid, uid: uid },
+      success: function(data) {
+        alert(data.message);
+      }
+    });
+    e.stopPropagation();
+    return false;
+  });
 });
