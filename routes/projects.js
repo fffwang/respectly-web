@@ -56,7 +56,7 @@ router.delete('/join', function(req, res, next) {
 });
 
 router.post('/support', function(req, res, next) {
-  var uid = req.body.uid;
+  var uid = req.session.uid;
   var pid = req.body.pid;
   if (!pid || !uid) return next(new Error("No pid or uid sent"));
 
@@ -80,7 +80,7 @@ router.post('/support', function(req, res, next) {
 });
 
 router.delete('/support', function(req, res, next) {
-  var uid = req.body.uid;
+  var uid = req.session.uid;
   var pid = req.body.pid;
   if (!pid || !uid) return next(new Error("No pid or uid sent"));
 

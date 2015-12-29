@@ -139,10 +139,10 @@ $(function () {
   $('#project-support-btn').on('click', function(e) {
     e.preventDefault();
     // Must change pid to proper value
-    var pid = 1;
+    var pid = "567f9c15b075f741a91ad3a7";
     $.ajax({
       type: 'POST',
-      url: '/projects/join',
+      url: '/projects/support',
       dataType: 'json',
       data: { pid: pid },
       success: function(data) {
@@ -156,10 +156,10 @@ $(function () {
   $('#project-join-btn').on('click', function(e) {
     e.preventDefault();
     // Must change pid to proper value
-    var pid = 1;
+    var pid = "567f9c15b075f741a91ad3a7";
     $.ajax({
       type: 'POST',
-      url: '/projects/support',
+      url: '/projects/join',
       dataType: 'json',
       data: { pid: pid },
       success: function(data) {
