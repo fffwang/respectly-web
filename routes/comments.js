@@ -56,7 +56,7 @@ router.post('/write', function (req, res, next) {
   });
 });
 
-router.get('/delete/:cid', function (req, res, next) {
+router.delete('/delete/:cid', function (req, res, next) {
   var cid = req.params.cid;
   var uid = req.session.uid;
   var pid = '567f9c15b075f741a91ad3a7';
@@ -71,8 +71,8 @@ router.get('/delete/:cid', function (req, res, next) {
         if (err) return next(err);
 
         res.header('Content-Type', 'application/json');
-        res.header('content-length', Buffer.byteLength(JSON.stringify({"message": "Comment deleted."})));
-        res.end(JSON.stringify({"message": "Comment deleted."}));
+        res.header('content-length', Buffer.byteLength(JSON.stringify({"message": 'successfully deleted'})));
+        res.end(JSON.stringify({"message": 'successfully deleted'}));
       });
     });
   });

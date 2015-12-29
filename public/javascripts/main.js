@@ -33,35 +33,57 @@ var toggleFlag = 1;
     $('.project').show();
   });
 
+  function commentDelete(cid) {
+    $.ajax({
+      type: 'DELETE',
+      url: '/comments/delete/' + cid,
+      dataType: 'json',
+      success: function(data) {
+        $.ajax({
+          type: 'GET',
+          url: '/comments',
+          dataType: 'json',
+          success: function(data) {
+            commentsLoad(data);
+          }
+        });
+      }
+    });
+  }
+
+  function commentsLoad(data) {
+    $('.commentdiv').empty();
+    $('.commentdiv').append(
+      '<div class="commentinput">' +
+      '<form action="/comments/write" method="post">' +
+      '<input class="commenttextinput" type="text" name="body">' + '</input>' +
+      '<button class="btn btn-default" type="submit">제출</button>' +
+      '</form>' +
+      '</div>' +
+      '<ol class="commentbody"></ol>'
+    );
+    data.comments.forEach(function(comment) {
+      $('.commentbody').append(
+        '<li class="commentitem">' +
+        '<div class="userpicture"><img src="/images/profile-picture.png"/></div>' +
+        '<div class="commentbox">' +
+        '<h3 class="name">' + comment._writer.profile.name + '</h3>' +
+        '<div class="commentedit"><a href="#">edit </a></div>' +
+        '<div><a class="commentdelete" href="#" data-cid="' + comment._id + '">delete</a></div>' +
+        '<div class="commentcontent">' + comment.body + '</div>' +
+        '</li>'
+      );
+    });
+  } 
+  
   $('#comment').on('click', function(e){
     e.preventDefault();
     $.ajax({
       type: 'GET',
       url: '/comments',
       dataType: 'json',
-      success: function (data) {
-        $('.commentdiv').empty();
-        $('.commentdiv').append(
-          '<div class="commentinput">' +
-            '<form action="/comments/write" method="post">' +
-              '<input class="commenttextinput" type="text" name="body">' + '</input>' +
-              '<button class="btn btn-default" type="submit">제출</button>' +
-            '</form>' +
-          '</div>' +
-          '<ol class="commentbody"></ol>'
-        );
-        data.comments.forEach(function(comment) {
-          $('.commentbody').append(
-            '<li class="commentitem">' +
-              '<div class="userpicture"><img src="/images/profile-picture.png"/></div>' +
-              '<div class="commentbox">' +
-              '<h3 class="name">' + comment._writer.profile.name + '</h3>' +
-              '<div class="commentedit"><a href="#">edit </a></div>' +
-              '<div class="commentdelete"><a href="/comments/delete/' + comment._id + '">delete</div>' +
-              '<div class="commentcontent">' + comment.body + '</div>' +
-            '</li>'
-          );
-        });
+      success: function(data) {
+        commentsLoad(data);
       }
     });
     
@@ -70,6 +92,13 @@ var toggleFlag = 1;
     $('.participatediv').hide();
     $('.commentdiv').show();
   });
+
+  $(document).on('click', '.commentdelete', function(e) {
+    e.preventDefault();
+
+    var cid = $(this).data('cid');
+    commentDelete(cid);
+  });  
 
   $('#support').on('click', function(){
     $('.project').hide();
