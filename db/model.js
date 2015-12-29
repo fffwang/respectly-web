@@ -40,6 +40,12 @@ var user = new schema({
       ref: 'project'
     }
   ],
+  _supportedProjects: [
+    {
+      type: String,
+      ref: 'project'
+    }
+  ],
   _comments: [
     {
       type: String,

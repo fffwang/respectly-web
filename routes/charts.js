@@ -7,6 +7,7 @@ var _$pjt = require('../db/model').project;
 
 router.get('/participants', function(req, res, next) {
   var pid = req.query.pid;
+  if (!pid) return next(new Error("No pid"));
 
   _$pjt
     .findById(pid)
@@ -21,6 +22,7 @@ router.get('/participants', function(req, res, next) {
 
 router.get('/supporters', function(req, res, next) {
   var pid = req.query.pid;
+  if (!pid) return next(new Error("No pid"));
 
   _$pjt.findById(pid, function(err, docPjt) {
     if (err) return next(err);

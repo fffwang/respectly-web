@@ -8,6 +8,7 @@ module.exports = {
   },
   success: {
     SIGNUP: "Successfully signed up.",
-    SIGNIN: "Successfully signed in."
+    SIGNIN: "Successfully signed in.",
+    GENERAL: "Success"
   }
 };
