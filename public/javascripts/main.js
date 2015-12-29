@@ -140,12 +140,11 @@ $(function () {
     e.preventDefault();
     // Must change pid to proper value
     var pid = 1;
-    var uid = $('#hdnSession').attr("data-value");
     $.ajax({
       type: 'POST',
       url: '/projects/join',
       dataType: 'json',
-      data: { pid: pid, uid: uid },
+      data: { pid: pid },
       success: function(data) {
         alert(data.message);
       }
@@ -158,12 +157,11 @@ $(function () {
     e.preventDefault();
     // Must change pid to proper value
     var pid = 1;
-    var uid = $('#hdnSession').attr("data-value");
     $.ajax({
       type: 'POST',
       url: '/projects/support',
       dataType: 'json',
-      data: { pid: pid, uid: uid },
+      data: { pid: pid },
       success: function(data) {
         alert(data.message);
       }
