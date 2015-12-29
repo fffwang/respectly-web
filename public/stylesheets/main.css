@@ -370,7 +370,7 @@ width: 20%;
 	position: absolute;
 	top: 147%;
 	width: 100%;
-	height: 200%;
+	height: 210%;
   background-color: #A5FFD3;
 	/*background-color: #B1C5FF;*/
 }
@@ -414,6 +414,11 @@ width: 20%;
   background-color: white;
   border-radius: 0;
 }
+
+#survey .modal-content{
+  border-radius: 0;
+  background-color: #EEEEEE;  
+ }
 .modal-header, .modal-footer{
   border: none;
 }
@@ -432,6 +437,8 @@ width: 20%;
 .modal-body label{
 font-weight: 400;
 }
+
+
 #joinCall{
   border-radius: 0;
   font-weight: 700;

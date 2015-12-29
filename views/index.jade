@@ -81,7 +81,10 @@ block content
             button#loginCall(type="button" data-dismiss="modal") Log in
             button#resendMail(type="button" data-dismiss="modal") Resend Confirmation Email
 
-    
+  #survey.modal
+    .modal-dialog#surveywindow
+      iframe#surveyCall(src="https://docs.google.com/forms/d/1UIsFDOK_YnPZXiAwDLF5h7JsCWiwTh4wViNkedI2hbo/viewform?embedded=true" width="760" height="780" frameborder="100" marginheight="100" marginwidth="100") 로드 중..
+
   section.brief-container
     //- 언젠가 화살표도 쓸 수 있겠지
     //- a.left(href="#carousel-example-generic" role="button" data-slide="prev") 
