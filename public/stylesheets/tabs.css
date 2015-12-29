@@ -123,8 +123,9 @@ text-transform: none;
 }
 
 .commenttextinput{
-  width: 30%;
-  height: 400px;
+  width: 50%;
+  margin-left: 25%;
+  height: 90px;
   border: 1px solid black;
 }
 
