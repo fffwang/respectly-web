@@ -49,8 +49,8 @@ router.post('/write', function (req, res, next) {
         if (err) return next(err);
 
         res.header('Content-Type', 'application/json');
-        res.header('content-length', Buffer.byteLength(JSON.stringify({"message": "Comment written."})));
-        res.end(JSON.stringify({"message": "Comment written."}));
+        res.header('content-length', Buffer.byteLength(JSON.stringify({"message": "successfully wrote."})));
+        res.end(JSON.stringify({"message": "successfully wrote."}));
       });
     });
   });

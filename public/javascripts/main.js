@@ -10,8 +10,7 @@ var toggleFlag = 1;
       $('.subheader').fadeIn(300);
     }
   });
-
-
+  
   $('.menu-toggle').on('click', function(){
     if(toggleFlag == 1){
     $('.mainnav').stop().hide();     
@@ -32,6 +31,25 @@ var toggleFlag = 1;
     $('.participatediv').hide();
     $('.project').show();
   });
+
+  function commentWrite(body) {
+    $.ajax({
+      type: 'POST',
+      url: '/comments/write',
+      dataType: 'json',
+      data: { body: body },
+      success: function(data) {
+        $.ajax({
+          type: 'GET',
+          url: '/comments',
+          dataType: 'json',
+          success: function(data) {
+            commentsLoad(data);
+          }
+        });
+      }
+    });
+  }
 
   function commentDelete(cid) {
     $.ajax({
@@ -55,10 +73,8 @@ var toggleFlag = 1;
     $('.commentdiv').empty();
     $('.commentdiv').append(
       '<div class="commentinput">' +
-      '<form action="/comments/write" method="post">' +
       '<input class="commenttextinput" type="text" name="body">' + '</input>' +
-      '<button class="btn btn-default" type="submit">제출</button>' +
-      '</form>' +
+      '<button class="btn btn-default commentwrite" type="submit">제출</button>' +
       '</div>' +
       '<ol class="commentbody"></ol>'
     );
@@ -91,6 +107,13 @@ var toggleFlag = 1;
     $('.supportdiv').hide();
     $('.participatediv').hide();
     $('.commentdiv').show();
+  });
+
+  $(document).on('click', '.commentwrite', function(e) {
+    e.preventDefault();
+    
+    var body = $(this).siblings('.commenttextinput')[0].value;
+    commentWrite(body);
   });
 
   $(document).on('click', '.commentdelete', function(e) {
