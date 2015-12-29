@@ -84,7 +84,6 @@ $(function () {
         '<div class="userpicture"><img src="/images/profile-picture.png"/></div>' +
         '<div class="commentbox">' +
         '<h3 class="name">' + comment._writer.profile.name + '</h3>' +
-        '<div class="commentedit"><a href="#">edit </a></div>' +
         '<div><a class="commentdelete" href="#" data-cid="' + comment._id + '">delete</a></div>' +
         '<div class="commentcontent">' + comment.body + '</div>' +
         '</li>'
