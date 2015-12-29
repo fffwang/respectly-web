@@ -2,7 +2,7 @@ extends ./layout.jade
 
 block navigation
   - var id = session.uid;
-  
+  input#hdnSession(type="hidden", data-value="#{id}")
   header
     nav.mainnav
       h1.site-logo.full

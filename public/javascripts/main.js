@@ -139,9 +139,9 @@ $(function () {
 
   $('#project-support-btn').on('click', function(e) {
     e.preventDefault();
-    // Must change id to proper value
+    // Must change pid to proper value
     var pid = 1;
-    var uid = 1;
+    var uid = $('#hdnSession').attr("data-value");
     $.ajax({
       type: 'POST',
       url: '/projects/join',
@@ -157,9 +157,9 @@ $(function () {
 
   $('#project-join-btn').on('click', function(e) {
     e.preventDefault();
-    // Must change id to proper value
+    // Must change pid to proper value
     var pid = 1;
-    var uid = 1;
+    var uid = $('#hdnSession').attr("data-value");
     $.ajax({
       type: 'POST',
       url: '/projects/support',
